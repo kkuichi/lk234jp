@@ -23,6 +23,22 @@
       "answer3": "C",
       "answer4": "D",
       "correct": "C"
+    },
+    {
+      "question": "cetverta otazka",
+      "answer1": "A",
+      "answer2": "B",
+      "answer3": "C",
+      "answer4": "D",
+      "correct": "C"
+    },
+    {
+      "question": "piata otazka",
+      "answer1": "A",
+      "answer2": "B",
+      "answer3": "C",
+      "answer4": "D",
+      "correct": "C"
     }
   ]
 }

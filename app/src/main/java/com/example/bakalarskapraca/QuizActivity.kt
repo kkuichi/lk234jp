@@ -100,7 +100,7 @@ class QuizActivity : AppCompatActivity() {
                     }
                 },1000)
             }else{
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, ResultActivity::class.java)
                 intent.putExtra("correct", correctAnswered)
                 intent.putExtra("wrong", wrongAnswered)
                 startActivity(intent)
@@ -156,11 +156,11 @@ class QuizActivity : AppCompatActivity() {
 //        quiztext.apply {
 //            text = (questionItems.get(currentQuestions).question)
 //        }
-        quiztext.setText(questionItems.get(currentQuestions).question)
-        answerA.setText(questionItems.get(currentQuestions).answer1)
-        answerB.setText(questionItems.get(currentQuestions).answer2)
-        answerC.setText(questionItems.get(currentQuestions).answer3)
-        answerD.setText(questionItems.get(currentQuestions).answer4)
+        quiztext.text = questionItems[currentQuestions].question
+        answerA.text = questionItems[currentQuestions].answer1
+        answerB.text = questionItems[currentQuestions].answer2
+        answerC.text = questionItems[currentQuestions].answer3
+        answerD.text = questionItems[currentQuestions].answer4
     }
     class QuestionsItem(
         var question:String,
