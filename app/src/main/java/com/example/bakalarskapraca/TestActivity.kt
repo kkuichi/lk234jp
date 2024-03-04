@@ -20,7 +20,7 @@ class TestActivity : AppCompatActivity() {
 
         val backButton : ImageButton = findViewById(R.id.backToMainBtn2)
         backButton.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
 
         // Creating the quiz list

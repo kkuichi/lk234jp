@@ -19,7 +19,7 @@ class SettingsActivity : AppCompatActivity() {
 
 
         backToMain.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
 
         switchTheme.setOnClickListener {
