@@ -1,10 +1,8 @@
 <resources>
-    <string name="app_name">BakalarskaPraca</string>
+    <string name="app_name">Rozvrhovanie a Logistika</string>
     <string name="teoria_btn">Teória</string>
     <string name="ulohy_btn">Ulohy</string>
     <string name="testy_btn">Testy</string>
     <string name="settings">Settings</string>
     <string name="Change_theme">Change theme</string>
-
-
 </resources>
