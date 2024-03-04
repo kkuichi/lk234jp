@@ -13,6 +13,8 @@ class MainActivity : AppCompatActivity() {
 
         val settingsButton: ImageButton = findViewById(R.id.settings_btn)
         val teoriaButton: Button = findViewById(R.id.teoria_btn)
+        val testyButton: Button = findViewById(R.id.testy_btn)
+        val ulohyButton: Button = findViewById(R.id.ulohy_btn)
 
 
         settingsButton.setOnClickListener {
