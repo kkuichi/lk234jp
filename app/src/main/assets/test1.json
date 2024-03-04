@@ -1,0 +1,28 @@
+{
+  "test": [
+    {
+      "question": "Prva otazka",
+      "answer1": "A",
+      "answer2": "B",
+      "answer3": "C",
+      "answer4": "D",
+      "correct": "A"
+    },
+    {
+      "question": "Druha otazka",
+      "answer1": "A",
+      "answer2": "B",
+      "answer3": "C",
+      "answer4": "D",
+      "correct": "B"
+    },
+    {
+      "question": "Tretia otazka",
+      "answer1": "A",
+      "answer2": "B",
+      "answer3": "C",
+      "answer4": "D",
+      "correct": "C"
+    }
+  ]
+}

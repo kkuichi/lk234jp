@@ -20,8 +20,11 @@ class MainActivity : AppCompatActivity() {
         settingsButton.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
-            teoriaButton.setOnClickListener {
+        teoriaButton.setOnClickListener {
             startActivity(Intent(this, TeoriaActivity::class.java))
+        }
+        testyButton.setOnClickListener {
+            startActivity(Intent(this, TestActivity::class.java))
         }
     }
 }
