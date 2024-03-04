@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "810275141288",
+    "project_id": "rozvrhovanie-a-logistika-f9776",
+    "storage_bucket": "rozvrhovanie-a-logistika-f9776.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810275141288:android:b018d30933081881ca749d",
+        "android_client_info": {
+          "package_name": "com.example.bakalarskapraca"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiNcbSGO5wF3tRidAn9J8hX-VVLHjsayo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
