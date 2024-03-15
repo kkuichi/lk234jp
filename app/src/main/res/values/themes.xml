@@ -28,11 +28,18 @@
         <item name="android:textColor">@color/text_color</item>
         <item name="android:textStyle">normal</item>
         <item name="android:elevation">4dp</item> <!-- Add elevation for shadow -->
-<!--        <item name="android:backgroundTint">@color/card_background</item> &lt;!&ndash; Use backgroundTint for Material buttons &ndash;&gt;-->
+        <item name="android:backgroundTint">@color/white</item> <!-- Use backgroundTint for Material buttons -->
         <item name="textAllCaps">false</item>
-        <!-- Optional: Specify a shapeAppearance for custom corner rounding -->
         <item name="shapeAppearance">@style/CustomShapeAppearance</item>
     </style>
+
+    <style name="ProgressInfo" parent="Widget.MaterialComponents.TabLayout">
+        <item name="android:textStyle">normal</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:elevation">4dp</item> <!-- Add elevation for shadow -->
+        <item name="shapeAppearance">@style/CustomShapeAppearance</item>
+    </style>
+
     <style name="CustomShapeAppearance" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">4dp</item>

@@ -41,7 +41,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.829">
+        app:layout_constraintVertical_bias="0.829"
+        style="@style/ProgressInfo">
 
 
         <TextView
@@ -54,6 +55,7 @@
             android:textColor="@color/text_color"
             android:textSize="17sp"
             android:textStyle="bold"
+            android:backgroundTint="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -71,11 +73,12 @@
             app:layout_constraintHorizontal_bias="0.92"
             app:layout_constraintStart_toEndOf="@+id/progressBar"
             app:layout_constraintTop_toBottomOf="@+id/progressInfo"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            android:backgroundTint="@android:color/transparent"
+            />
 
         <ProgressBar
             android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
             android:layout_width="108dp"
             android:layout_height="108dp"
             android:layout_marginStart="16dp"
@@ -85,9 +88,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5"
-            android:progress="10"
             android:max="100"
-            android:progressTint="@color/red"
+            android:backgroundTint="@android:color/transparent"
+            android:indeterminate="false"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:progressDrawable="@drawable/circular_progress_bar"
+            />
+
+        <TextView
+            android:id="@+id/percentage_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="75%"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+            app:layout_constraintEnd_toEndOf="@+id/progressBar"
+            app:layout_constraintStart_toStartOf="@+id/progressBar"
+            app:layout_constraintTop_toTopOf="@+id/progressBar"
+            android:backgroundTint="@android:color/transparent"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
