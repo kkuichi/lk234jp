@@ -6,25 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
 
+    <Button
+        android:id="@+id/teoria_btn"
+        style="@style/MainButton"
+        android:layout_width="340dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginEnd="150dp"
+        android:contentDescription="@string/ucet"
+        android:contextClickable="true"
+        android:text="@string/ucet"
+        android:textAlignment="textStart"
+        android:textSize="24sp"
+        app:icon="@drawable/student_icon"
+        app:iconGravity="start"
+        app:iconPadding="10dp"
+        app:iconSize="40dp"
+        app:iconTint="@color/white"
+        app:iconTintMode="multiply"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.259" />
+
     <ImageButton
         android:id="@+id/backToMainBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="44dp"
+        android:contentDescription="back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_delete"
-        android:contentDescription="back"/>
+        app:srcCompat="@drawable/back_button"
+        android:backgroundTint="@android:color/transparent"
+        />
 
     <Button
         android:id="@+id/theme_switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="260dp"
+        style="@style/MainButton"
+        android:layout_width="340dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginEnd="150dp"
+        android:contentDescription="@string/Change_theme"
+        android:contextClickable="true"
         android:text="@string/Change_theme"
+        android:textAlignment="textStart"
+        android:textSize="24sp"
+        app:icon="@drawable/dark_mode"
+        app:iconGravity="start"
+        app:iconPadding="10dp"
+        app:iconSize="40dp"
+        app:iconTint="@color/white"
+        app:iconTintMode="multiply"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/teoria_btn"
+        app:layout_constraintVertical_bias="0.09" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
