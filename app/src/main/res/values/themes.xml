@@ -27,22 +27,22 @@
     <style name="MainButton" parent="Widget.MaterialComponents.Button">
         <item name="android:textColor">@color/text_color</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:elevation">4dp</item> <!-- Add elevation for shadow -->
+        <item name="android:elevation">5dp</item> <!-- Add elevation for shadow -->
         <item name="android:backgroundTint">@color/white</item> <!-- Use backgroundTint for Material buttons -->
         <item name="textAllCaps">false</item>
         <item name="shapeAppearance">@style/CustomShapeAppearance</item>
     </style>
 
-    <style name="ProgressInfo" parent="Widget.MaterialComponents.TabLayout">
+    <style name="ProgressInfo">
         <item name="android:textStyle">normal</item>
         <item name="android:backgroundTint">@color/white</item>
-        <item name="android:elevation">4dp</item> <!-- Add elevation for shadow -->
-        <item name="shapeAppearance">@style/CustomShapeAppearance</item>
+        <item name="android:elevation">5dp</item> <!-- Add elevation for shadow -->
+        <item name="android:background">@drawable/progress_info_background</item>
     </style>
 
     <style name="CustomShapeAppearance" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">4dp</item>
+        <item name="cornerSize">10dp</item>
     </style>
 
 

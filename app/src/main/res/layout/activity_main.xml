@@ -47,68 +47,67 @@
 
         <TextView
             android:id="@+id/progressInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="108dp"
+            android:layout_width="162dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="22dp"
+            android:backgroundTint="@android:color/transparent"
             android:text="Result Info"
             android:textColor="@color/text_color"
             android:textSize="17sp"
             android:textStyle="bold"
-            android:backgroundTint="@android:color/transparent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/progressBar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.354" />
 
         <TextView
-            android:id="@+id/progress_score"
+            android:id="@+id/progressTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="156dp"
-            android:text="Score"
+            android:backgroundTint="@android:color/transparent"
+            android:text="Total"
             android:textColor="@color/text_secondary_color"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.92"
+            app:layout_constraintHorizontal_bias="0.758"
             app:layout_constraintStart_toEndOf="@+id/progressBar"
             app:layout_constraintTop_toBottomOf="@+id/progressInfo"
-            app:layout_constraintVertical_bias="0.0"
-            android:backgroundTint="@android:color/transparent"
-            />
+            app:layout_constraintVertical_bias="0.0" />
 
         <ProgressBar
             android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="108dp"
             android:layout_height="108dp"
-            android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/progressInfo"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5"
-            android:max="100"
             android:backgroundTint="@android:color/transparent"
             android:indeterminate="false"
-            style="?android:attr/progressBarStyleHorizontal"
+            android:max="100"
             android:progressDrawable="@drawable/circular_progress_bar"
-            />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.069"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.48" />
 
         <TextView
-            android:id="@+id/percentage_text"
+            android:id="@+id/progressPercentage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:backgroundTint="@android:color/transparent"
             android:text="75%"
-            android:textStyle="bold"
             android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/progressBar"
             app:layout_constraintEnd_toEndOf="@+id/progressBar"
+            app:layout_constraintHorizontal_bias="0.522"
             app:layout_constraintStart_toStartOf="@+id/progressBar"
             app:layout_constraintTop_toTopOf="@+id/progressBar"
-            android:backgroundTint="@android:color/transparent"
-            />
+            app:layout_constraintVertical_bias="0.506" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
