@@ -66,5 +66,27 @@
         <item name="android:layout_marginBottom">5dp</item>
         <item name="strokeWidth">0dp</item>
     </style>
+
+    <style name="TextStyle">
+        <item name="android:textColor">@color/text_color</item>
+    </style>
+    <style name="TextSecondaryStyle">
+        <item name="android:textColor">@color/text_secondary_color</item>
+    </style>
+
+    <style name="MainIcon">
+        <item name="srcCompat">@drawable/tuke</item>
+    </style>
+
+    <style name="SettingsIcon">
+        <item name="srcCompat">@drawable/settings_icon</item>
+    </style>
+
+    <style name="BackIcon">
+        <item name="srcCompat">@drawable/back_button</item>
+    </style>
+
+
+
     <style name="Theme.BakalarskaPraca" parent="Base.Theme.BakalarskaPraca" />
 </resources>

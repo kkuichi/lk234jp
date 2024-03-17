@@ -16,7 +16,8 @@
         android:contentDescription="back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_button" />
+        style="@style/BackIcon"
+        />
 
 
     <androidx.recyclerview.widget.RecyclerView

@@ -33,16 +33,15 @@
 
     <ImageButton
         android:id="@+id/backToMainBtn"
+        style="@style/BackIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="44dp"
+        android:backgroundTint="@android:color/transparent"
         android:contentDescription="back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_button"
-        android:backgroundTint="@android:color/transparent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/theme_switch"
