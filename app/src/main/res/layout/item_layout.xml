@@ -4,6 +4,8 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="26dp"
+    android:background="@drawable/item_border"
+    android:layout_marginBottom="15dp"
     >
 
     <TextView
@@ -11,7 +13,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Item Name"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        style="@style/TextStyle"
+        android:backgroundTint="@android:color/transparent"
+        />
 
 </RelativeLayout>
 

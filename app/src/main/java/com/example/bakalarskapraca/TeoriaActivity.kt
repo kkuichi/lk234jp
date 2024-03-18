@@ -1,5 +1,6 @@
 package com.example.bakalarskapraca
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.AssetFileDescriptor
 import android.graphics.Color
@@ -39,17 +40,17 @@ class TeoriaActivity : AppCompatActivity() {
         val pdfListView: RecyclerView = findViewById(R.id.pdfListView)
 
         val items = listOf(
-            PdfItem(1,"Item 1", "Teoria1.pdf"),
-            PdfItem(2,"Item 2", "Teoria2.pdf"),
-            PdfItem(3,"Item 3", "Teoria3.pdf"),
-            PdfItem(4,"Item 4", "Teoria4.pdf"),
-            PdfItem(5,"Item 5", "Teoria5.pdf"),
-            PdfItem(6,"Item 6", "Teoria6.pdf"),
-            PdfItem(7,"Item 7", "Teoria7.pdf"),
-            PdfItem(8,"Item 8", "Teoria8.pdf"),
-            PdfItem(9,"Item 9", "Teoria9.pdf"),
-            PdfItem(10,"Item 10", "Teoria10.pdf"),
-            PdfItem(11,"Item 11", "Teoria11.pdf"),
+            PdfItem(1,getString(R.string.Teoria_1), "Teoria1.pdf"),
+            PdfItem(2,getString(R.string.Teoria_2), "Teoria2.pdf"),
+            PdfItem(3,getString(R.string.Teoria_3), "Teoria3.pdf"),
+            PdfItem(4,getString(R.string.Teoria_4), "Teoria4.pdf"),
+            PdfItem(5,getString(R.string.Teoria_5), "Teoria5.pdf"),
+            PdfItem(6,getString(R.string.Teoria_6), "Teoria6.pdf"),
+            PdfItem(7,getString(R.string.Teoria_7), "Teoria7.pdf"),
+            PdfItem(8,getString(R.string.Teoria_8), "Teoria8.pdf"),
+            PdfItem(9,getString(R.string.Teoria_9), "Teoria9.pdf"),
+            PdfItem(10,getString(R.string.Teoria_10), "Teoria10.pdf"),
+            PdfItem(11,getString(R.string.Teoria_11), "Teoria11.pdf"),
         )
 
         pdfListView.layoutManager = LinearLayoutManager(this)

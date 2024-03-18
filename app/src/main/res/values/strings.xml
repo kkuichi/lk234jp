@@ -15,4 +15,17 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+    <string name="Teoria_1">1. Úvodná prednáška</string>
+    <string name="Teoria_2">2. Základné metódy operačného výskumu</string>
+    <string name="Teoria_3">3. Alokačné problémy</string>
+    <string name="Teoria_4">4. Rozvrhovanie</string>
+    <string name="Teoria_5">5. Plánovanie výrobných kapacít</string>
+    <string name="Teoria_6">6. Zákazková logistika</string>
+    <string name="Teoria_7">7. Zásobovanie</string>
+    <string name="Teoria_8">8. Úlohy s ohraničeniami</string>
+    <string name="Teoria_9">9. Rozvrhovanie</string>
+    <string name="Teoria_10">10. Rozvrhovanie</string>
+    <string name="Teoria_11">11. Rozvrhovanie</string>
+
 </resources>
