@@ -17,7 +17,6 @@
 
         <activity android:name=".PdfViewerActivity"
             android:parentActivityName=".TeoriaActivity">
-            <!-- Meta-data tag for supporting API levels 16 and above -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".TeoriaActivity" />

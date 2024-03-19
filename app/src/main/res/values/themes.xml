@@ -86,6 +86,9 @@
         <item name="srcCompat">@drawable/back_button</item>
     </style>
 
+    <style name="RecyclerViewItem">
+        <item name="android:textColor">@color/text_color</item>
+    </style>
 
 
     <style name="Theme.BakalarskaPraca" parent="Base.Theme.BakalarskaPraca" />

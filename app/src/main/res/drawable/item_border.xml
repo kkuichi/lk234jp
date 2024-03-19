@@ -7,7 +7,7 @@
         android:color="@color/card_background" /> <!-- Red border; change as needed -->
 
     <!-- Optional: Fill color -->
-    <solid android:color="#FFFFFF" /> <!-- White background; change as needed -->
+<!--    <solid android:color="#FFFFFF" /> &lt;!&ndash; White background; change as needed &ndash;&gt;-->
 
     <!-- Optional: Rounded corners -->
     <corners android:radius="4dp"/> <!-- Adjust corner radius if needed -->

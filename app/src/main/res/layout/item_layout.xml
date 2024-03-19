@@ -6,6 +6,7 @@
     android:padding="26dp"
     android:background="@drawable/item_border"
     android:layout_marginBottom="15dp"
+    style="@style/RecyclerViewItem"
     >
 
     <TextView
