@@ -8,7 +8,6 @@
 
     <!-- Optional: Fill color -->
 <!--    <solid android:color="#FFFFFF" /> &lt;!&ndash; White background; change as needed &ndash;&gt;-->
-
     <!-- Optional: Rounded corners -->
     <corners android:radius="4dp"/> <!-- Adjust corner radius if needed -->
 
