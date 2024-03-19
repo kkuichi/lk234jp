@@ -8,16 +8,16 @@
 
     <ImageButton
         android:id="@+id/backToMainBtn2"
+        style="@style/BackIcon"
         android:layout_width="69dp"
         android:layout_height="69dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@android:color/transparent"
         android:contentDescription="back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/BackIcon"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/testListView"

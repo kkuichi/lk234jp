@@ -43,11 +43,12 @@ data class QuizItem(val quizNumber: Int)
 class QuizAdapter(private val quizList: List<QuizItem>, private val context: Context) : RecyclerView.Adapter<QuizAdapter.QuizViewHolder>() {
 
     class QuizViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView = view.findViewById(android.R.id.text1)
+        val textView: TextView = view.findViewById(R.id.item_text)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuizViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(android.R.layout.simple_list_item_1, parent, false)
+        // Inflate the new custom layout
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.test_item_layout, parent, false)
         return QuizViewHolder(view)
     }
 
@@ -64,4 +65,3 @@ class QuizAdapter(private val quizList: List<QuizItem>, private val context: Con
 
     override fun getItemCount() = quizList.size
 }
-

@@ -1,5 +1,6 @@
 package com.example.bakalarskapraca
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.res.AssetFileDescriptor
@@ -15,7 +16,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,8 +28,9 @@ import java.io.FileOutputStream
 import com.github.barteksc.pdfviewer.PDFView
 import java.io.IOException
 
-data class PdfItem(val id: Int, val name: String, val fileName: String)
 class TeoriaActivity : AppCompatActivity() {
+
+    private lateinit var startPdfViewerResult: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +58,19 @@ class TeoriaActivity : AppCompatActivity() {
             PdfItem(11,getString(R.string.Teoria_11), "Teoria11.pdf"),
         )
 
+        startPdfViewerResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data: Intent? = result.data
+                val progress = data?.getIntExtra("progress", 0) ?: 0
+                val fileName = data?.getStringExtra("fileName") ?: ""
+
+                // Update the progress in your list and refresh the RecyclerView
+                items.find { it.name == fileName }?.let { item ->
+                    item.progress = progress
+                    pdfListView.adapter?.notifyDataSetChanged()
+                }
+            }
+        }
         pdfListView.layoutManager = LinearLayoutManager(this)
         pdfListView.adapter = PdfAdapter(items) { pdfItem ->
             // When an item is clicked, start PdfViewerActivity with the PDF file name
@@ -60,13 +78,15 @@ class TeoriaActivity : AppCompatActivity() {
                 putExtra("fileName", pdfItem.fileName)
                 putExtra("pdfTitle", pdfItem.name) // Pass the title for setting in PdfViewerActivity
             }
-            startActivity(intent)
+//            startActivity(intent)
+            startPdfViewerResult.launch(intent)
         }
 
     }
 
 }
 
+data class PdfItem(val id: Int, val name: String, val fileName: String, var progress: Int = 0)
 
 class PdfAdapter(
     private val items: List<PdfItem>,
@@ -90,9 +110,11 @@ class PdfAdapter(
         private val onItemClick: (PdfItem) -> Unit
     ) : RecyclerView.ViewHolder(itemView) {
         private val textView: TextView = itemView.findViewById(R.id.item_text)
+        private val progressBar: ProgressBar = itemView.findViewById(R.id.item_progress)
 
         fun bind(pdfItem: PdfItem) {
             textView.text = pdfItem.name
+            progressBar.progress = pdfItem.progress
             itemView.setOnClickListener {
                 onItemClick(pdfItem)
             }
