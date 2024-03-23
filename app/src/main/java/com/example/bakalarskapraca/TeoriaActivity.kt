@@ -1,32 +1,19 @@
 package com.example.bakalarskapraca
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.content.res.AssetFileDescriptor
-import android.graphics.Color
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
-import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import java.io.File
-import java.io.FileOutputStream
-import com.github.barteksc.pdfviewer.PDFView
-import java.io.IOException
 
 class TeoriaActivity : AppCompatActivity() {
 
@@ -63,10 +50,13 @@ class TeoriaActivity : AppCompatActivity() {
                 val data: Intent? = result.data
                 val progress = data?.getIntExtra("progress", 0) ?: 0
                 val fileName = data?.getStringExtra("fileName") ?: ""
+                val lastPage = data?.getIntExtra("lastPage", 0) ?: 0
+
 
                 // Update the progress in your list and refresh the RecyclerView
                 items.find { it.name == fileName }?.let { item ->
                     item.progress = progress
+                    item.lastPage = lastPage
                     pdfListView.adapter?.notifyDataSetChanged()
                 }
             }
@@ -77,6 +67,7 @@ class TeoriaActivity : AppCompatActivity() {
             val intent = Intent(this, PdfViewerActivity::class.java).apply {
                 putExtra("fileName", pdfItem.fileName)
                 putExtra("pdfTitle", pdfItem.name) // Pass the title for setting in PdfViewerActivity
+                putExtra("lastPage", pdfItem.lastPage) // Pass the title for setting in PdfViewerActivity
             }
 //            startActivity(intent)
             startPdfViewerResult.launch(intent)
@@ -86,7 +77,7 @@ class TeoriaActivity : AppCompatActivity() {
 
 }
 
-data class PdfItem(val id: Int, val name: String, val fileName: String, var progress: Int = 0)
+data class PdfItem(val id: Int, val name: String, val fileName: String, var progress: Int = 0, var lastPage: Int = 0)
 
 class PdfAdapter(
     private val items: List<PdfItem>,
@@ -94,7 +85,7 @@ class PdfAdapter(
 ) : RecyclerView.Adapter<PdfAdapter.PdfViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PdfViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.teoria_item_layout, parent, false)
         return PdfViewHolder(view, onItemClick)
     }
 
@@ -111,10 +102,12 @@ class PdfAdapter(
     ) : RecyclerView.ViewHolder(itemView) {
         private val textView: TextView = itemView.findViewById(R.id.item_text)
         private val progressBar: ProgressBar = itemView.findViewById(R.id.item_progress)
+        private val progressNum: TextView = itemView.findViewById(R.id.teoria_progress_num)
 
         fun bind(pdfItem: PdfItem) {
             textView.text = pdfItem.name
-            progressBar.progress = pdfItem.progress
+//            progressBar.progress = pdfItem.progress
+            progressNum.text = "${pdfItem.progress}%"
             itemView.setOnClickListener {
                 onItemClick(pdfItem)
             }

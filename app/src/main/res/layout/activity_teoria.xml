@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".TeoriaActivity">
 
+    <TextView
+        android:id="@+id/header_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/teoria_btn"
+        style="@style/TextStyle"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textAllCaps="true"
+        />
 
     <ImageButton
         android:id="@+id/backToMainBtn"
@@ -13,8 +24,8 @@
         android:layout_width="69dp"
         android:layout_height="69dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
+        android:layout_marginTop="11dp"
         android:backgroundTint="@android:color/transparent"
         android:contentDescription="back"
         app:layout_constraintStart_toStartOf="parent"

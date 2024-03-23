@@ -17,6 +17,7 @@
         android:textSize="18sp"
         style="@style/TextStyle"
         android:backgroundTint="@android:color/transparent"
+        android:fontFamily="@font/ralewaymedium"
         />
 
     <ProgressBar
@@ -25,8 +26,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/item_text"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        />
 
-
+    <TextView
+        android:id="@+id/teoria_progress_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="8dp"
+        android:text="0%"
+        android:fontFamily="@font/ralewaysemibold"
+        style="@style/TextStyle"
+        android:textSize="20sp"
+        android:layout_centerVertical="true"
+        />
 </RelativeLayout>
 

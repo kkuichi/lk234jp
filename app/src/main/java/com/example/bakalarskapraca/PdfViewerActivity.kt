@@ -14,7 +14,8 @@ import kotlin.properties.Delegates
 
 class PdfViewerActivity : AppCompatActivity() {
 
-    var currentProgress by Delegates.notNull<Int>()
+    var currentProgress:Int = 0
+    var currentPage: Int = 0
     lateinit var fileName:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +35,8 @@ class PdfViewerActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
-        // Get the file name from the intent
+        val lastPage = intent.getIntExtra("lastPage", 0)
         val fileName = intent.getStringExtra("fileName") ?: ""
-        Log.d("PdfViewerActivity", "Received file name: $fileName")
 
         try {
             val bytes = assets.open(fileName).use { inputStream ->
@@ -47,12 +47,18 @@ class PdfViewerActivity : AppCompatActivity() {
                 .enableSwipe(true)
                 .swipeHorizontal(false)
                 .enableDoubletap(true)
-                .defaultPage(0)
+                .defaultPage(lastPage)
                 .onPageChange { page, pageCount ->
-                currentProgress = (page.toFloat() / pageCount.toFloat() * 100).toInt()
-                // Update the progress in your data model and adapter
-                // This requires keeping a reference to the current PdfItem and notifying the adapter
+                    val visiblePages = 3 // user typically sees up to 3 pages
+                    val adjustedPageCount = pageCount - (visiblePages - 1)
+                    val adjustedPage = if (page >= adjustedPageCount) pageCount else page
 
+                    currentProgress = (adjustedPage.toFloat() / pageCount.toFloat() * 100).toInt()
+                    currentPage = page
+
+                    if (page >= pageCount - 1) {
+                        currentProgress = 100
+                    }
                 }
                 .load()
             } catch (e: IOException) {
@@ -68,14 +74,25 @@ class PdfViewerActivity : AppCompatActivity() {
                 // Assume 'currentProgress' holds the last known progress value
                 val data = Intent().apply {
                     putExtra("progress", currentProgress)
-                    putExtra("fileName", fileName) // To identify which PDF's progress is being updated
+                    putExtra("fileName", fileName)
+                    putExtra("lastPage", currentPage)
                 }
                 setResult(Activity.RESULT_OK, data)
                 finish()
-
                 return true
             }
         }
         return super.onOptionsItemSelected(item)
     }
+    override fun onBackPressed() {
+        val data = Intent().apply {
+            putExtra("progress", currentProgress)
+            putExtra("fileName", fileName)
+        }
+        setResult(Activity.RESULT_OK, data)
+        finish()
+        super.onBackPressed()
+    }
+
+
 }
