@@ -12,7 +12,20 @@
           "package_name": "com.example.bakalarskapraca"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "810275141288-1m868d9dt1dchs4jfa7f1k7iho2gn784.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bakalarskapraca",
+            "certificate_hash": "38d4ee9db4651af41c8f08e06cc5ed5a0509a73f"
+          }
+        },
+        {
+          "client_id": "810275141288-53rb10ia8piuo44usnhauvqdmir6k0mn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCiNcbSGO5wF3tRidAn9J8hX-VVLHjsayo"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "810275141288-53rb10ia8piuo44usnhauvqdmir6k0mn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

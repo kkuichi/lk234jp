@@ -8,6 +8,9 @@ import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +19,20 @@ class MainActivity : AppCompatActivity() {
     private lateinit var progressPercentage :TextView
     private lateinit var progressTotal :TextView
 
+    private lateinit var auth: FirebaseAuth
+
+    public override fun onStart() {
+        super.onStart()
+        auth = Firebase.auth
+        val currentUser = auth.currentUser
+        if(User.email == ""){
+            User.email = currentUser?.email.toString()
+        }
+        if (!User.isLogged) {
+            startActivity(Intent(applicationContext, LoginActivity::class.java))
+            finish()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,10 +48,6 @@ class MainActivity : AppCompatActivity() {
         progressTotal = findViewById(R.id.progressTotal)
 
 
-        setProgress(55, progressBar, progressPercentage)
-        progressInfo.text = "Prebrali ste takmer polovicu"
-        progressTotal.text = "6 z 10"
-
         settingsButton.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
@@ -44,6 +57,14 @@ class MainActivity : AppCompatActivity() {
         testyButton.setOnClickListener {
             startActivity(Intent(this, TestActivity::class.java))
         }
+
+
+        setProgress(55, progressBar, progressPercentage)
+        progressInfo.text = "Prebrali ste takmer polovicu"
+        progressTotal.text = "6 z 10"
+
+        progressInfo.text = User.email
+
     }
 
     private fun setProgress(progress: Int, progressBar: ProgressBar, progressPercentage :TextView){

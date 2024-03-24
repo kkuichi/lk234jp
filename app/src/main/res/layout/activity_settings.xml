@@ -7,7 +7,7 @@
     tools:context=".SettingsActivity">
 
     <Button
-        android:id="@+id/teoria_btn"
+        android:id="@+id/account_btn"
         style="@style/MainButton"
         android:layout_width="340dp"
         android:layout_height="85dp"
@@ -65,7 +65,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/teoria_btn"
+        app:layout_constraintTop_toBottomOf="@+id/account_btn"
         app:layout_constraintVertical_bias="0.09" />
 
 
