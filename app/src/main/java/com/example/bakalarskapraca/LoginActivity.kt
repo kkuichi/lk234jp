@@ -40,14 +40,6 @@ class LoginActivity : AppCompatActivity() {
     lateinit var gsc: GoogleSignInClient
 
 
-//    public override fun onStart() {
-//        super.onStart()
-//
-//        if(User.isLogged){
-//            startActivity(Intent(applicationContext, MainActivity::class.java))
-//        }
-//    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,8 +60,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginForgotPass.setOnClickListener{
-//            startActivity(Intent(this, RegistrationActivity::class.java))
-//            finish()
+            startActivity(Intent(this, ForgotPassword::class.java))
         }
 
 

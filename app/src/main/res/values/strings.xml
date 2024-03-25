@@ -24,7 +24,11 @@
     <string name="registration_go_to_login">Už ste zaregistrovaní? Prihláste sa</string>
 
 
+    <string name="forgot_password_title">Obnovenie hesla</string>
+    <string name="forgot_password_text">Zadajte e-mail, na ktorý vám bude zaslaný odkaz na obnovenie hesla.</string>
+    <string name="forgot_password_btn">Zaslať</string>
 
+    forgot_password_text
     <string name="Teoria_1">1. Úvodná prednáška</string>
     <string name="Teoria_2">2. Základné metódy operačného výskumu</string>
     <string name="Teoria_3">3. Alokačné problémy</string>
