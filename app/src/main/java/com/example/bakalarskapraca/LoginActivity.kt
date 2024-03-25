@@ -128,6 +128,7 @@ class LoginActivity : AppCompatActivity() {
             try {
                 val account = task.getResult(ApiException::class.java)
                 firebaseAuthWithGoogle(account.idToken!!)
+                User.name = account.givenName.toString()
             } catch (e: ApiException) {
                 Toast.makeText(applicationContext, "Google sign in failed: $e", Toast.LENGTH_LONG).show()
             }
@@ -139,8 +140,15 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    User.isLogged = true
+                    val userFirebase = auth.currentUser
+                    if (userFirebase != null) {
+                        val email = userFirebase.email ?: ""
+                        val name = userFirebase.displayName ?: ""
+                        val uid = userFirebase.uid
+
+                        User.setFields(uid, email, name, 0, listOf(0), listOf(0), true)
+                        User.uploadUserToFireStore()
+                    }
                     startActivity(Intent(this, StartActivity::class.java))
                 } else {
                     Toast.makeText(baseContext, "Authentication Failed.", Toast.LENGTH_SHORT).show()

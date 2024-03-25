@@ -19,7 +19,9 @@ import com.google.android.gms.tasks.Task
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class RegistrationActivity : AppCompatActivity() {
 
@@ -37,6 +39,9 @@ class RegistrationActivity : AppCompatActivity() {
     lateinit var googleSignUp: ImageButton
     lateinit var gso: GoogleSignInOptions
     lateinit var gsc: GoogleSignInClient
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
@@ -54,6 +59,7 @@ class RegistrationActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
+
 
         registrationBtn.setOnClickListener {
             progressBar.visibility = View.VISIBLE
@@ -102,7 +108,13 @@ class RegistrationActivity : AppCompatActivity() {
                             "Account created.",
                             Toast.LENGTH_SHORT,
                         ).show()
-                        startActivity(Intent(applicationContext, MainActivity::class.java))
+
+
+                        val userFirebase = auth.currentUser!!
+                        User.setFields(userFirebase.uid, email, name, 0, listOf(0), listOf(0), true)
+                        User.uploadUserToFireStore()
+
+                        startActivity(Intent(applicationContext, StartActivity::class.java))
                         finish()
                     } else {
                         // If sign in fails, display a message to the user.
@@ -116,12 +128,17 @@ class RegistrationActivity : AppCompatActivity() {
         }
 
 
-        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
         gsc = GoogleSignIn.getClient(this,gso)
-        googleSignUp.setOnClickListener{
+        googleSignUp.setOnClickListener {
             signInViaGoogle()
         }
     }
+
     fun signInViaGoogle(){
         startActivityForResult(gsc.signInIntent,1000)
     }
@@ -129,17 +146,36 @@ class RegistrationActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode == 1000){
-            var task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
-
+        if (requestCode == 1000) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
-                task.getResult(ApiException::class.java)
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
-            }catch (e: ApiException){
-                Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_LONG).show()
+                val account = task.getResult(ApiException::class.java)
+                firebaseAuthWithGoogle(account.idToken!!)
+                User.name = account.givenName.toString()
+            } catch (e: ApiException) {
+                Toast.makeText(applicationContext, "Google sign in failed: $e", Toast.LENGTH_LONG).show()
             }
-
         }
+    }
+
+    fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val userFirebase = auth.currentUser
+                    if (userFirebase != null) {
+                        val email = userFirebase.email ?: ""
+                        val name = userFirebase.displayName ?: ""
+                        val uid = userFirebase.uid
+
+                        User.setFields(uid, email, name, 0, listOf(0), listOf(0), true)
+                        User.uploadUserToFireStore()
+                    }
+                    startActivity(Intent(this, StartActivity::class.java))
+                } else {
+                    Toast.makeText(baseContext, "Authentication Failed.", Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 }
