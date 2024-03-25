@@ -12,28 +12,28 @@ object User {
     var name: String = ""
     var email: String = ""
     var progress: Int = 0
-    var teoria: List<Int> = listOf()
+    var teoria_progress: List<Int> = listOf()
+    var teoria_lastPage: List<Int> = listOf()
     var testy: List<Int> = listOf()
     var isLogged: Boolean = false
 
-    override fun toString(): String {
-        return "User(name='$name', email='$email', progress=$progress, uid='$uid', teoria=$teoria, testy=$testy, isLogged=$isLogged)"
-    }
     fun logOutUser(){
         uid = ""
         name= ""
         email= ""
         progress = -1
-        teoria = emptyList()
+        teoria_progress = emptyList()
+        teoria_lastPage = emptyList()
         testy = emptyList()
         isLogged= false
     }
-    fun setFields(uid:String, email:String, name:String, progress:Int, teoria:List<Int>, testy:List<Int>, isLogged:Boolean){
+    fun setFields(uid:String, email:String, name:String, progress:Int, teoria_progress:List<Int>,teoria_lastPage:List<Int>, testy:List<Int>, isLogged:Boolean){
         this.uid = uid
         this.email = email
         this.name = name
         this.progress = progress
-        this.teoria = teoria
+        this.teoria_progress = teoria_progress
+        this.teoria_lastPage = teoria_lastPage
         this.testy = testy
         this.isLogged = isLogged
     }
@@ -48,7 +48,8 @@ object User {
                     "email" to this.email,
                     "name" to this.name,
                     "progress" to this.progress,
-                    "teoria" to this.teoria,
+                    "teoria_progress" to this.teoria_progress,
+                    "teoria_lastPage" to this.teoria_lastPage,
                     "testy" to this.testy,
                     "isLogged" to this.isLogged
                 )
@@ -70,7 +71,7 @@ object User {
             if (document!=null) {
                 val localUser = document.toObject(User::class.java)
                 if (localUser != null) {
-                    setFields(localUser.uid, localUser.email, localUser.name, localUser.progress, localUser.teoria, localUser.testy, true)
+                    setFields(localUser.uid, localUser.email, localUser.name, localUser.progress, localUser.teoria_progress, localUser.teoria_lastPage, localUser.testy, true)
                 }
             }
         } catch (e: Exception) {

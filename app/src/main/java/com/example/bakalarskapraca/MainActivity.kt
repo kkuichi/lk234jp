@@ -60,11 +60,8 @@ class MainActivity : AppCompatActivity() {
 
 
         setProgress(User.progress, progressBar, progressPercentage)
-        progressInfo.text = "Prebrali ste takmer polovicu"
-        progressTotal.text = "6 z 10"
-
-        progressInfo.text = User.email
-        progressTotal.text = User.name
+        progressInfo.text = User.name
+        progressTotal.text = User.email
     }
 
     private fun setProgress(progress: Int, progressBar: ProgressBar, progressPercentage :TextView){
