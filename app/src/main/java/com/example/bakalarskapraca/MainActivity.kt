@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(applicationContext, LoginActivity::class.java))
             finish()
         }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,6 +63,10 @@ class MainActivity : AppCompatActivity() {
         setProgress(User.progress, progressBar, progressPercentage)
         progressInfo.text = User.name
         progressTotal.text = User.email
+        if(User.name == ""){
+            progressInfo.text = getString(R.string.no_internet_connection)
+            progressTotal.text = getString(R.string.no_internet_connection2)
+        }
     }
 
     private fun setProgress(progress: Int, progressBar: ProgressBar, progressPercentage :TextView){

@@ -40,7 +40,6 @@ class LoginActivity : AppCompatActivity() {
     lateinit var gsc: GoogleSignInClient
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -64,10 +63,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
 
-
         auth = Firebase.auth
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
-
 
 
         loginBtn.setOnClickListener{
@@ -146,7 +143,7 @@ class LoginActivity : AppCompatActivity() {
                         val name = userFirebase.displayName ?: ""
                         val uid = userFirebase.uid
 
-                        User.setFields(uid, email, name, 0, listOf(0), listOf(0), true)
+                        User.setFields(uid, email, name, 0, listOf(0,0,0,0,0,0,0,0,0,0,0), listOf(0,0,0,0,0,0,0,0,0,0,0), listOf(0,0,0,0,0,0,0,0,0,0,0),true)
                         User.uploadUserToFireStore()
                     }
                     startActivity(Intent(this, StartActivity::class.java))

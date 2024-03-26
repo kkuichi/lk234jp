@@ -28,7 +28,6 @@
     <string name="forgot_password_text">Zadajte e-mail, na ktorý vám bude zaslaný odkaz na obnovenie hesla.</string>
     <string name="forgot_password_btn">Zaslať</string>
 
-    forgot_password_text
     <string name="Teoria_1">1. Úvodná prednáška</string>
     <string name="Teoria_2">2. Základné metódy operačného výskumu</string>
     <string name="Teoria_3">3. Alokačné problémy</string>
@@ -40,5 +39,9 @@
     <string name="Teoria_9">9. Rozvrhovanie</string>
     <string name="Teoria_10">10. Rozvrhovanie</string>
     <string name="Teoria_11">11. Rozvrhovanie</string>
+
+
+    <string name="no_internet_connection">Connect to internet to see the progress</string>
+    <string name="no_internet_connection2">Or restart application</string>
 
 </resources>

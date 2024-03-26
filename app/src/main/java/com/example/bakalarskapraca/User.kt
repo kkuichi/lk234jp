@@ -12,9 +12,9 @@ object User {
     var name: String = ""
     var email: String = ""
     var progress: Int = 0
-    var teoria_progress: List<Int> = listOf()
-    var teoria_lastPage: List<Int> = listOf()
-    var testy: List<Int> = listOf()
+    var teoria_progress: List<Int> = listOf(0,0,0,0,0,0,0,0,0,0,0)
+    var teoria_lastPage: List<Int> = listOf(0,0,0,0,0,0,0,0,0,0,0)
+    var testy: List<Int> = listOf(0,0,0,0,0,0,0,0,0,0,0)
     var isLogged: Boolean = false
 
     fun logOutUser(){
