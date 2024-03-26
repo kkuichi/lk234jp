@@ -143,7 +143,7 @@ class LoginActivity : AppCompatActivity() {
                         val name = userFirebase.displayName ?: ""
                         val uid = userFirebase.uid
 
-                        User.setFields(uid, email, name, 0, mutableListOf(0,0,0,0,0,0,0,0,0,0,0), mutableListOf(0,0,0,0,0,0,0,0,0,0,0), mutableListOf(0,0,0,0,0,0,0,0,0,0,0),true)
+                        User.setFields(uid, email, name, 0f, mutableListOf(0,0,0,0,0,0,0,0,0,0,0), mutableListOf(0,0,0,0,0,0,0,0,0,0,0), mutableListOf(0,0,0,0,0,0,0,0,0,0,0),true)
                         User.uploadUserToFireStore()
                     }
                     startActivity(Intent(this, StartActivity::class.java))

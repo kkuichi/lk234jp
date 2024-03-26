@@ -11,23 +11,23 @@ object User {
     var uid: String = ""
     var name: String = ""
     var email: String = ""
-    var progress: Int = 0
-    var teoria_progress: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
+    var progress: Float = 0.0f
+    var teoria_progress: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0) // Range 0-100 each = 11 topics
     var teoria_lastPage: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
-    var testy: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
+    var testy: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)           // Range 0-100 each = 11 tests
     var isLogged: Boolean = false
 
     fun logOutUser(){
         uid = ""
         name= ""
         email= ""
-        progress = -1
+        progress = -1f
         teoria_progress = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
         teoria_lastPage = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
         testy = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
         isLogged= false
     }
-    fun setFields(uid:String, email:String, name:String, progress:Int, teoria_progress:MutableList<Int>,teoria_lastPage:MutableList<Int>, testy:MutableList<Int>, isLogged:Boolean){
+    fun setFields(uid:String, email:String, name:String, progress:Float, teoria_progress:MutableList<Int>,teoria_lastPage:MutableList<Int>, testy:MutableList<Int>, isLogged:Boolean){
         this.uid = uid
         this.email = email
         this.name = name
@@ -36,6 +36,16 @@ object User {
         this.teoria_lastPage = teoria_lastPage
         this.testy = testy
         this.isLogged = isLogged
+    }
+    fun calculateProgress(){
+        progress = 0f
+        for (i in teoria_progress){
+            var local = (i.toFloat()/100)* (100.0/22.0)
+            progress += local.toFloat()
+        }
+        for (i in testy){
+            progress += (i.toFloat()/100 * (22/100)).toInt()
+        }
     }
     fun uploadUserToFireStore() {
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -79,6 +89,7 @@ object User {
             .addOnFailureListener { e ->
             println("Error writing user data: $e")
             }
+        calculateProgress()
 
     }
     suspend fun loadUserFromFireStore() = withContext(Dispatchers.IO) {

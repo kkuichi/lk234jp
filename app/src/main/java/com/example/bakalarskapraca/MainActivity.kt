@@ -35,6 +35,19 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        User.calculateProgress()
+        progressBar = findViewById(R.id.progressBar)
+        progressInfo = findViewById(R.id.progressInfo)
+        setProgress(User.progress, progressBar, progressPercentage)
+    }
+
+//    override fun onStop() {
+//        super.onStop()
+//        User.calculateProgress()
+//    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -59,7 +72,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, TestActivity::class.java))
         }
 
-
+        User.calculateProgress()
         setProgress(User.progress, progressBar, progressPercentage)
         progressInfo.text = User.name
         progressTotal.text = User.email
@@ -69,8 +82,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setProgress(progress: Int, progressBar: ProgressBar, progressPercentage :TextView){
-        progressBar.progress = progress;
-        progressPercentage.text = "$progress%"
+    fun setProgress(progress: Float, progressBar: ProgressBar, progressPercentage :TextView){
+
+        progressBar.progress = progress.toInt();
+        progressPercentage.text = "${progress.toInt()}%"
     }
 }
