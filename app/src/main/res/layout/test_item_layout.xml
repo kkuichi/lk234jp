@@ -6,19 +6,20 @@
     android:padding="26dp"
     android:background="@drawable/item_border"
     android:layout_marginBottom="15dp"
+    android:gravity="center"
     >
 
     <TextView
         android:id="@+id/item_text"
+        style="@style/TextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Item Name"
-        android:textSize="18sp"
-        style="@style/TextStyle"
         android:backgroundTint="@android:color/transparent"
+        android:fontFamily="@font/ralewaymedium"
+        android:text="Test Name"
+        android:textSize="18sp"
+        android:gravity="center"
         />
-
-
 
 </RelativeLayout>
 
