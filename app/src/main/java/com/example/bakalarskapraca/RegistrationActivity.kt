@@ -111,7 +111,7 @@ class RegistrationActivity : AppCompatActivity() {
 
 
                         val userFirebase = auth.currentUser!!
-                        User.setFields(userFirebase.uid, email, name, 0, listOf(0,0,0,0,0,0,0,0,0,0,0), listOf(0,0,0,0,0,0,0,0,0,0,0), listOf(0,0,0,0,0,0,0,0,0,0,0),true)
+                        User.setFields(userFirebase.uid, email, name, 0, mutableListOf(0,0,0,0,0,0,0,0,0,0,0), mutableListOf(0,0,0,0,0,0,0,0,0,0,0), mutableListOf(0,0,0,0,0,0,0,0,0,0,0),true)
                         User.uploadUserToFireStore()
 
                         startActivity(Intent(applicationContext, StartActivity::class.java))
@@ -169,7 +169,7 @@ class RegistrationActivity : AppCompatActivity() {
                         val name = userFirebase.displayName ?: ""
                         val uid = userFirebase.uid
 
-                        User.setFields(uid, email, name, 0, listOf(0,0,0,0,0,0,0,0,0,0,0), listOf(0,0,0,0,0,0,0,0,0,0,0), listOf(0,0,0,0,0,0,0,0,0,0,0),true)
+                        User.setFields(uid, email, name, 0, mutableListOf(0,0,0,0,0,0,0,0,0,0,0), mutableListOf(0,0,0,0,0,0,0,0,0,0,0), mutableListOf(0,0,0,0,0,0,0,0,0,0,0),true)
                         User.uploadUserToFireStore()
                     }
                     startActivity(Intent(this, StartActivity::class.java))

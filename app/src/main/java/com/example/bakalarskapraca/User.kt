@@ -12,9 +12,9 @@ object User {
     var name: String = ""
     var email: String = ""
     var progress: Int = 0
-    var teoria_progress: List<Int> = listOf(0,0,0,0,0,0,0,0,0,0,0)
-    var teoria_lastPage: List<Int> = listOf(0,0,0,0,0,0,0,0,0,0,0)
-    var testy: List<Int> = listOf(0,0,0,0,0,0,0,0,0,0,0)
+    var teoria_progress: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
+    var teoria_lastPage: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
+    var testy: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
     var isLogged: Boolean = false
 
     fun logOutUser(){
@@ -22,12 +22,12 @@ object User {
         name= ""
         email= ""
         progress = -1
-        teoria_progress = emptyList()
-        teoria_lastPage = emptyList()
-        testy = emptyList()
+        teoria_progress = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
+        teoria_lastPage = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
+        testy = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
         isLogged= false
     }
-    fun setFields(uid:String, email:String, name:String, progress:Int, teoria_progress:List<Int>,teoria_lastPage:List<Int>, testy:List<Int>, isLogged:Boolean){
+    fun setFields(uid:String, email:String, name:String, progress:Int, teoria_progress:MutableList<Int>,teoria_lastPage:MutableList<Int>, testy:MutableList<Int>, isLogged:Boolean){
         this.uid = uid
         this.email = email
         this.name = name
@@ -63,6 +63,24 @@ object User {
             println("Error reading user document: $e")
         }
     }
+    fun uploadUserTeoriaToFireStore() {
+        val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+        val userDocumentRef = db.collection("users").document(uid)
+
+        val updatedUser = hashMapOf(
+            "progress" to this.progress,
+            "teoria_progress" to this.teoria_progress,
+            "teoria_lastPage" to this.teoria_lastPage,
+        )
+        userDocumentRef.update(updatedUser)
+            .addOnSuccessListener {
+                println("User data successfully updated")
+            }
+            .addOnFailureListener { e ->
+            println("Error writing user data: $e")
+            }
+
+    }
     suspend fun loadUserFromFireStore() = withContext(Dispatchers.IO) {
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
@@ -78,6 +96,5 @@ object User {
             println("Error reading document $e")
         }
     }
-
 }
 
