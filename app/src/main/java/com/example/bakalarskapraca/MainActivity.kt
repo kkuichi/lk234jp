@@ -43,10 +43,6 @@ class MainActivity : AppCompatActivity() {
         setProgress(User.progress, progressBar, progressPercentage)
     }
 
-//    override fun onStop() {
-//        super.onStop()
-//        User.calculateProgress()
-//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -6,7 +6,9 @@ import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -43,7 +45,24 @@ class StartActivity : AppCompatActivity() {
             finish()
         }
 
+        loadNightModeSettings()
+
     }
+    fun loadNightModeSettings() {
+        val sharedPreferences = getSharedPreferences("UserSettings", MODE_PRIVATE)
+
+        val isNightModeEnabled = sharedPreferences.getBoolean("NightMode", false) // false - значення за замовчуванням
+
+        setNightMode(isNightModeEnabled)
+    }
+    fun setNightMode(isEnabled: Boolean) {
+        if (isEnabled) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+    }
+
 }
 
 fun isNetworkAvailable(context: Context): Boolean {
@@ -51,5 +70,6 @@ fun isNetworkAvailable(context: Context): Boolean {
     val activeNetworkInfo = connectivityManager.activeNetworkInfo
     return activeNetworkInfo != null && activeNetworkInfo.isConnected
 }
+
 
 

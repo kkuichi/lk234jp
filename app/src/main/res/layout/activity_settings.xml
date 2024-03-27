@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
 
+    <TextView
+        style="@style/TextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="68dp"
+        android:text="@string/settings"
+        android:textAllCaps="true"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/backToMainBtn"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/account_btn"
         style="@style/MainButton"
@@ -67,6 +79,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/account_btn"
         app:layout_constraintVertical_bias="0.09" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/shuffleTests"
+        style="@style/MainButton"
+        android:layout_width="340dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginEnd="150dp"
+        android:contentDescription="@string/shuffleTest"
+        android:contextClickable="true"
+        android:text="@string/shuffleTest"
+        android:textAlignment="textStart"
+        android:textSize="24sp"
+        app:icon="@drawable/shuffle_icon"
+        app:iconGravity="start"
+        app:iconPadding="10dp"
+        app:iconSize="40dp"
+        app:iconTint="@color/white"
+        app:iconTintMode="multiply"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/theme_switch"
+        app:layout_constraintVertical_bias="0.124" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

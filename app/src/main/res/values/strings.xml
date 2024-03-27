@@ -3,7 +3,7 @@
     <string name="teoria_btn">Teória</string>
     <string name="ulohy_btn">Príklady</string>
     <string name="testy_btn">Testy</string>
-    <string name="settings">Settings</string>
+    <string name="settings">Nastavenia</string>
     <string name="ucet">Účet</string>
     <string name="Change_theme">Zmeniť tému</string>
     <string name="title_activity_result_quiz">Test</string>
@@ -47,6 +47,7 @@
     <string name="nextQuestion">Ďalej</string>
     <string name="Correct">Správnych</string>
     <string name="Wrong">Nesprávnych</string>
+    <string name="shuffleTest">Zmiešať testy</string>
 
     <string name="Advice1">Výborne</string>
     <string name="Advice2">Veľmi dobre</string>

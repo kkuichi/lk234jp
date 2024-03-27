@@ -47,8 +47,12 @@ class QuizActivity : AppCompatActivity() {
 
 
         loadAllQuestions(quizFile);
-        Collections.shuffle(questionItems);
-        setQuestionScreen(currentQuestion);
+
+        val doShuffleTest = loadShuffleTestsSettings()
+        if(doShuffleTest) {
+            Collections.shuffle(questionItems)
+        }
+        setQuestionScreen(currentQuestion)
 
         answerA.setOnClickListener {
             buttonOptionClick(answerA)
@@ -63,6 +67,10 @@ class QuizActivity : AppCompatActivity() {
             buttonOptionClick(answerD)
         }
 
+    }
+    fun loadShuffleTestsSettings():Boolean {
+        val sharedPreferences = getSharedPreferences("UserSettings", MODE_PRIVATE)
+        return sharedPreferences.getBoolean("ShuffleQuestions", false)
     }
 
     private fun paintBtnToRegular(){
