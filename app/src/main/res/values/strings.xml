@@ -42,4 +42,16 @@
     <string name="no_internet_connection">Connect to internet to see the progress</string>
     <string name="no_internet_connection2">Or restart application</string>
 
+
+    <string name="returnFromTests">Späť</string>
+    <string name="nextQuestion">Ďalej</string>
+    <string name="Correct">Správnych</string>
+    <string name="Wrong">Nesprávnych</string>
+
+    <string name="Advice1">Výborne</string>
+    <string name="Advice2">Veľmi dobre</string>
+    <string name="Advice3">Dobre</string>
+    <string name="Advice4">Uspokojivo</string>
+    <string name="Advice5">Dostatočne</string>
+    <string name="Advice6">Nedostatočne</string>
 </resources>

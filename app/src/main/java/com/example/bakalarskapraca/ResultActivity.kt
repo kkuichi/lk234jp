@@ -29,26 +29,30 @@ class ResultActivity : AppCompatActivity() {
 
         val correct = intent.getIntExtra("correct", 0)
         val wrong = intent.getIntExtra("wrong", 0)
-        val score = correct * 5
+        val testID = intent.getIntExtra("testID", 0)
+        val total = correct+wrong
+        val score = (correct * 100)/total
+
+        User.testy[testID-1] = score
+        User.uploadUserProgressToFireStore()
 
         correctResult.text = correct.toString();
         wrongResult.text = wrong.toString();
-        resultScore.text = score.toString();
+        resultScore.text = "$score/100";
 
-        val total = correct+wrong
 
-        if (correct/total < 0.5) {
-            resultInfo.setText("You have to take the test again");
-//            resultImage.setImageResource(R.drawable.ic_sad);
-        } else if (correct/total < 0.65) {
-            resultInfo.setText("You have to try a little more");
-//            resultImage.setImageResource(R.drawable.ic_neutral);
-        } else if (correct/total < 0.85) {
-            resultInfo.setText("You are pretty good");
-//            resultImage.setImageResource(R.drawable.ic_smile);
-        } else {
-            resultInfo.setText("You are very good congratulations");
-//            resultImage.setImageResource(R.drawable.ic_smile);
+        if (score<51) {
+            resultInfo.setText(getString(R.string.Advice6));
+        } else if (score<61) {
+            resultInfo.setText(getString(R.string.Advice5));
+        } else if (score<71) {
+            resultInfo.setText(getString(R.string.Advice4));
+        }else if (score<81) {
+            resultInfo.setText(getString(R.string.Advice3));
+        }else if (score<91) {
+            resultInfo.setText(getString(R.string.Advice2));
+        }else if (score<100) {
+            resultInfo.setText(getString(R.string.Advice1));
         }
 
         goHome.setOnClickListener {

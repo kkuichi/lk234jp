@@ -47,25 +47,25 @@ class QuizAdapter(private val quizList: List<QuizItem>, private val context: Con
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuizViewHolder {
-        // Inflate the new custom layout
         val view = LayoutInflater.from(parent.context).inflate(R.layout.test_item_layout, parent, false)
         return QuizViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: QuizViewHolder, position: Int) {
         val quizItem = quizList[position]
-//        holder.textView.text = "Test ${quizItem.quizNumber}"
         val resName = "Teoria_${position + 1}"
         val resId = holder.itemView.context.resources.getIdentifier(resName, "string", holder.itemView.context.packageName)
 
-        if (resId != 0) { // Перевіряємо, що ресурс існує
+        if (resId != 0) {
             holder.textView.text = holder.itemView.context.getString(resId)
         } else {
             holder.textView.text = "Test"
         }
         holder.itemView.setOnClickListener {
             val intent = Intent(context, QuizActivity::class.java).apply {
+                putExtra("test_ID", quizItem.quizNumber)
                 putExtra("test_file", "test${quizItem.quizNumber}.json")
+                putExtra("test_name", holder.itemView.context.getString(resId))
             }
             context.startActivity(intent)
         }

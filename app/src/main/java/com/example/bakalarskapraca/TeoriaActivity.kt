@@ -57,7 +57,7 @@ class TeoriaActivity : AppCompatActivity() {
                     var itemId = item.id-1
                     User.teoria_progress[itemId] = progress
                     User.teoria_lastPage[itemId] = lastPage
-                    User.uploadUserTeoriaToFireStore()
+                    User.uploadUserProgressToFireStore()
                     item.progress = progress
                     item.lastPage = lastPage
                     pdfListView.adapter?.notifyDataSetChanged()

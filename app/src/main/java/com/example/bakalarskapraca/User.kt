@@ -40,11 +40,12 @@ object User {
     fun calculateProgress(){
         progress = 0f
         for (i in teoria_progress){
-            var local = (i.toFloat()/100)* (100.0/22.0)
+            val local = (i.toFloat()/100)* (100.0/22.0)
             progress += local.toFloat()
         }
         for (i in testy){
-            progress += (i.toFloat()/100 * (22/100)).toInt()
+            val local = (i.toFloat()/100)* (100.0/22.0)
+            progress += local.toFloat()
         }
     }
     fun uploadUserToFireStore() {
@@ -73,15 +74,17 @@ object User {
             println("Error reading user document: $e")
         }
     }
-    fun uploadUserTeoriaToFireStore() {
+    fun uploadUserProgressToFireStore() {
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
         val userDocumentRef = db.collection("users").document(uid)
+        calculateProgress()
 
         val updatedUser = hashMapOf(
             "progress" to this.progress,
             "teoria_progress" to this.teoria_progress,
             "teoria_lastPage" to this.teoria_lastPage,
-        )
+            "testy" to this.testy
+            )
         userDocumentRef.update(updatedUser)
             .addOnSuccessListener {
                 println("User data successfully updated")
@@ -89,7 +92,6 @@ object User {
             .addOnFailureListener { e ->
             println("Error writing user data: $e")
             }
-        calculateProgress()
 
     }
     suspend fun loadUserFromFireStore() = withContext(Dispatchers.IO) {

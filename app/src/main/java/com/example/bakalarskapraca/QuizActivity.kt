@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.widget.Button
 import android.widget.TextView
+import com.google.android.material.appbar.MaterialToolbar
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
@@ -23,18 +24,27 @@ class QuizActivity : AppCompatActivity() {
     private var currentQuestion: Int = 0
     private var correctAnswered: Int = 0
     private var wrongAnswered: Int = 0
+    private var test_ID: Int = 0
     private lateinit var nextBtn: Button
+    private lateinit var test_title: MaterialToolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
 
         val quizFile = intent.getStringExtra("test_file") ?: return
+        val testName = intent.getStringExtra("test_name") ?: return
+        test_ID = intent.getIntExtra("test_ID", 0)
+
         quiztext = findViewById(R.id.quizText)
         answerA = findViewById(R.id.aanswer)
         answerB = findViewById(R.id.banswer)
         answerC = findViewById(R.id.canswer)
         answerD = findViewById(R.id.danswer)
+
+        test_title = findViewById(R.id.test_header)
+        test_title.title = testName.substring(3)
+
 
         loadAllQuestions(quizFile);
         Collections.shuffle(questionItems);
@@ -55,7 +65,6 @@ class QuizActivity : AppCompatActivity() {
 
     }
 
-
     private fun paintBtnToRegular(){
         answerA.setBackgroundColor(resources.getColor(R.color.background))
         answerB.setBackgroundColor(resources.getColor(R.color.background))
@@ -65,7 +74,6 @@ class QuizActivity : AppCompatActivity() {
         answerB.setTextColor(resources.getColor(R.color.text_secondary_color))
         answerC.setTextColor(resources.getColor(R.color.text_secondary_color))
         answerD.setTextColor(resources.getColor(R.color.text_secondary_color))
-
     }
     private fun buttonOptionClick(answer: TextView){
         var db_answer = "none"
@@ -103,6 +111,7 @@ class QuizActivity : AppCompatActivity() {
                 val intent = Intent(this, ResultActivity::class.java)
                 intent.putExtra("correct", correctAnswered)
                 intent.putExtra("wrong", wrongAnswered)
+                intent.putExtra("testID", test_ID)
                 startActivity(intent)
                 finish()
             }

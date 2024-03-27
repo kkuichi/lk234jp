@@ -17,24 +17,29 @@
         android:background="@color/background"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
+
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/test_header"
             app:titleCentered="true"
             app:title="TEST"
-            app:titleTextColor="@color/text_color"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            style="@style/TextStyle"
+            />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.card.MaterialCardView
         style="@style/TestCard"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
         <LinearLayout
             android:layout_gravity="center"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="150dp"
+            >
             <TextView
                 android:textSize="20sp"
                 android:textColor="@color/text_secondary_color"
@@ -128,5 +133,5 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="60dp"
         android:layout_marginTop="20dp"
-        android:text="Next" />
+        android:text="@string/nextQuestion" />
 </LinearLayout>
