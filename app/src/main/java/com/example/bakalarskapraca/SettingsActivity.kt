@@ -22,10 +22,10 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-
         val backToMain: ImageButton = findViewById(R.id.backToMainBtn)
         val switchTheme: Button = findViewById(R.id.theme_switch)
         val account: Button = findViewById(R.id.account_btn)
+
         var isNightMode:Boolean = false
 
         val shuffleTests: MaterialButton = findViewById(R.id.shuffleTests)
