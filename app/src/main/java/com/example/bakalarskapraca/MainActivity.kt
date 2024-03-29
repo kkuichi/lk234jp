@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         if(User.email == ""){
             User.email = currentUser?.email.toString()
         }
-        if (!User.isLogged) {
+        if (!User.isLogged || currentUser == null) {
             startActivity(Intent(applicationContext, LoginActivity::class.java))
             finish()
         }

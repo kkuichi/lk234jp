@@ -25,7 +25,7 @@ class StartActivity : AppCompatActivity() {
         auth = Firebase.auth
         val currentUser = auth.currentUser
         User.isLogged = true
-        if(isNetworkAvailable(this)) {
+//        if(isNetworkAvailable(this)) {
             if (currentUser != null) {
                 User.uid = currentUser.uid
                 lifecycleScope.launch {
@@ -39,11 +39,11 @@ class StartActivity : AppCompatActivity() {
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
                 finish()
             }
-        }else{
-            startActivity(Intent(this@StartActivity, MainActivity::class.java))
-            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
-            finish()
-        }
+//        }else{
+//            startActivity(Intent(this@StartActivity, MainActivity::class.java))
+//            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+//            finish()
+//        }
 
         loadNightModeSettings()
 
