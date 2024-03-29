@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val settingsButton: ImageButton = findViewById(R.id.settings_btn)
+        val ratingButton: ImageButton = findViewById(R.id.rating_btn)
         val teoriaButton: Button = findViewById(R.id.teoria_btn)
         val testyButton: Button = findViewById(R.id.testy_btn)
         val ulohyButton: Button = findViewById(R.id.ulohy_btn)
@@ -60,6 +61,9 @@ class MainActivity : AppCompatActivity() {
 
         settingsButton.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
+        }
+        ratingButton.setOnClickListener {
+            startActivity(Intent(this, RatingActivity::class.java))
         }
         teoriaButton.setOnClickListener {
             startActivity(Intent(this, TeoriaActivity::class.java))

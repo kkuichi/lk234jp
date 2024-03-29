@@ -1,6 +1,7 @@
 package com.example.bakalarskapraca
 
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
@@ -116,5 +117,6 @@ object User {
             println("Error reading document $e")
         }
     }
+
 }
 

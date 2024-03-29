@@ -86,6 +86,9 @@
     <style name="SettingsIcon">
         <item name="srcCompat">@drawable/settings_icon</item>
     </style>
+    <style name="RatingIcon">
+        <item name="srcCompat">@drawable/rating_icon</item>
+    </style>
 
     <style name="BackIcon">
         <item name="srcCompat">@drawable/back_button</item>
