@@ -64,4 +64,7 @@
     <string name="Priklady_7">7. Rozvrhovanie 2.</string>
 
     <string name="rating">TOP 15</string>
+    <string name="name">Meno</string>
+    <string name="progress">Prospech</string>
+
 </resources>

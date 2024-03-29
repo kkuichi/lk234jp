@@ -80,8 +80,9 @@
     <style name="SettingsIcon">
         <item name="srcCompat">@drawable/settings_icon_night</item>
     </style>
+
     <style name="RatingIcon">
-        <item name="srcCompat">@drawable/rating_icon</item>
+        <item name="srcCompat">@drawable/rating_night</item>
     </style>
 
     <style name="BackIcon">
