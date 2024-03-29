@@ -43,7 +43,8 @@ data class QuizItem(val quizNumber: Int)
 class QuizAdapter(private val quizList: List<QuizItem>, private val context: Context) : RecyclerView.Adapter<QuizAdapter.QuizViewHolder>() {
 
     class QuizViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView = view.findViewById(R.id.item_text)
+        val test_text: TextView = view.findViewById(R.id.item_text)
+        var test_progress: TextView = view.findViewById(R.id.test_progress)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuizViewHolder {
@@ -56,10 +57,28 @@ class QuizAdapter(private val quizList: List<QuizItem>, private val context: Con
         val resName = "Teoria_${position + 1}"
         val resId = holder.itemView.context.resources.getIdentifier(resName, "string", holder.itemView.context.packageName)
 
+        val grade:String
+        if(User.testy[position] > 91)
+            grade = "A"
+        else if (User.testy[position] > 81)
+            grade = "B"
+        else if (User.testy[position] > 71)
+            grade = "C"
+        else if (User.testy[position] > 61)
+            grade = "D"
+        else if (User.testy[position] > 51)
+            grade = "E"
+        else if (User.testy[position] == 0)
+            grade = ""
+        else
+            grade = "FX"
+
+
         if (resId != 0) {
-            holder.textView.text = holder.itemView.context.getString(resId)
+            holder.test_text.text = holder.itemView.context.getString(resId)
+            holder.test_progress.text = grade
         } else {
-            holder.textView.text = "Test"
+            holder.test_text.text = "Test"
         }
         holder.itemView.setOnClickListener {
             val intent = Intent(context, QuizActivity::class.java).apply {

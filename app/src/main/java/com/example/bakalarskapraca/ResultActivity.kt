@@ -56,7 +56,7 @@ class ResultActivity : AppCompatActivity() {
         }
 
         goHome.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, TestActivity::class.java))
             finish()
         }
 
