@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PrikladyActivity">
+
+    <TextView
+        android:id="@+id/header_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ulohy_btn"
+        style="@style/TextStyle"
+        android:textSize="26sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:textAllCaps="true"
+        />
+
+    <ImageButton
+        android:id="@+id/backToMainBtn"
+        style="@style/BackIcon"
+        android:layout_width="69dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="11dp"
+        android:backgroundTint="@android:color/transparent"
+        android:contentDescription="back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pdfListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/backToMainBtn"
+        android:layout_centerVertical="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="8dp" >
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</RelativeLayout>

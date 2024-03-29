@@ -67,6 +67,9 @@ class MainActivity : AppCompatActivity() {
         testyButton.setOnClickListener {
             startActivity(Intent(this, TestActivity::class.java))
         }
+        ulohyButton.setOnClickListener {
+            startActivity(Intent(this, PrikladyActivity::class.java))
+        }
 
         User.calculateProgress()
         setProgress(User.progress, progressBar, progressPercentage)

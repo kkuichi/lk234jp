@@ -15,6 +15,7 @@ object User {
     var teoria_progress: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0) // Range 0-100 each = 11 topics
     var teoria_lastPage: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
     var testy: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)           // Range 0-100 each = 11 tests
+    var priklady_lastPage: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
     var isLogged: Boolean = false
 
     fun logOutUser(){
@@ -25,9 +26,12 @@ object User {
         teoria_progress = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
         teoria_lastPage = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
         testy = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
+        priklady_lastPage = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
         isLogged= false
     }
-    fun setFields(uid:String, email:String, name:String, progress:Float, teoria_progress:MutableList<Int>,teoria_lastPage:MutableList<Int>, testy:MutableList<Int>, isLogged:Boolean){
+    fun setFields(uid:String, email:String, name:String, progress:Float,
+                  teoria_progress:MutableList<Int>,teoria_lastPage:MutableList<Int>, testy:MutableList<Int>, priklady_lastPage:MutableList<Int>,
+                  isLogged:Boolean){
         this.uid = uid
         this.email = email
         this.name = name
@@ -35,6 +39,7 @@ object User {
         this.teoria_progress = teoria_progress
         this.teoria_lastPage = teoria_lastPage
         this.testy = testy
+        this.priklady_lastPage = priklady_lastPage
         this.isLogged = isLogged
     }
     fun calculateProgress(){
@@ -62,6 +67,7 @@ object User {
                     "teoria_progress" to this.teoria_progress,
                     "teoria_lastPage" to this.teoria_lastPage,
                     "testy" to this.testy,
+                    "priklady_lastPage" to this.priklady_lastPage,
                     "isLogged" to this.isLogged
                 )
                 userDocumentRef.set(newUser).addOnSuccessListener {
@@ -83,7 +89,8 @@ object User {
             "progress" to this.progress,
             "teoria_progress" to this.teoria_progress,
             "teoria_lastPage" to this.teoria_lastPage,
-            "testy" to this.testy
+            "testy" to this.testy,
+            "priklady_lastPage" to this.priklady_lastPage
             )
         userDocumentRef.update(updatedUser)
             .addOnSuccessListener {
@@ -102,7 +109,7 @@ object User {
             if (document!=null) {
                 val localUser = document.toObject(User::class.java)
                 if (localUser != null) {
-                    setFields(localUser.uid, localUser.email, localUser.name, localUser.progress, localUser.teoria_progress, localUser.teoria_lastPage, localUser.testy, true)
+                    setFields(localUser.uid, localUser.email, localUser.name, localUser.progress, localUser.teoria_progress, localUser.teoria_lastPage, localUser.testy, localUser.priklady_lastPage,true)
                 }
             }
         } catch (e: Exception) {

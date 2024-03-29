@@ -16,6 +16,9 @@
         android:theme="@style/Theme.BakalarskaPraca"
         tools:targetApi="31">
         <activity
+            android:name=".PrikladyActivity"
+            android:exported="false" />
+        <activity
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity

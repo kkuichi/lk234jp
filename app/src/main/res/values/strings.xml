@@ -39,9 +39,8 @@
     <string name="Teoria_10">10. Rozvrhovanie</string>
     <string name="Teoria_11">11. Rozvrhovanie</string>
 
-    <string name="no_internet_connection">Connect to internet to see the progress</string>
-    <string name="no_internet_connection2">Or restart application</string>
-
+    <string name="no_internet_connection">Pripojte sa k internetu, aby bolo možné vidieť progres</string>
+    <string name="no_internet_connection2">Alebo reštartujte aplikáciu</string>
 
     <string name="returnFromTests">Späť</string>
     <string name="nextQuestion">Ďalej</string>
@@ -55,4 +54,12 @@
     <string name="Advice4">Uspokojivo</string>
     <string name="Advice5">Dostatočne</string>
     <string name="Advice6">Nedostatočne</string>
+
+    <string name="Priklady_1">1. Lineárne programovanie 1</string>
+    <string name="Priklady_2">2. Lineárne programovanie 2.</string>
+    <string name="Priklady_3">3. Celočíselné programovanie a alokačné úlohy</string>
+    <string name="Priklady_4">4. Metóda vetvenia a medzí</string>
+    <string name="Priklady_5">5. Metóda CRAFT</string>
+    <string name="Priklady_6">6. Rozvrhovanie 1.</string>
+    <string name="Priklady_7">7. Rozvrhovanie 2.</string>
 </resources>
