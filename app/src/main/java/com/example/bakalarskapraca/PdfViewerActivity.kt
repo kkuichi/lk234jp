@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
 import com.github.barteksc.pdfviewer.PDFView
+import java.io.File
 import java.io.IOException
 import kotlin.properties.Delegates
 
@@ -45,11 +46,10 @@ class PdfViewerActivity : AppCompatActivity() {
         val fileName = intent.getStringExtra("fileName") ?: ""
 
         try {
-            val bytes = assets.open(fileName).use { inputStream ->
-                inputStream.readBytes()
-            }
-            // Load the PDF from the ByteArray
-            pdfView.fromBytes(bytes)
+
+            val localFile = File(getExternalFilesDir(null), fileName)
+
+            pdfView.fromFile(localFile)
                 .enableSwipe(true)
                 .swipeHorizontal(false)
                 .enableDoubletap(true)
@@ -77,7 +77,6 @@ class PdfViewerActivity : AppCompatActivity() {
         when (item.itemId) {
             android.R.id.home -> {
                 // Respond to the action bar's Up/Home button
-                // Assume 'currentProgress' holds the last known progress value
                 val data = Intent().apply {
                     putExtra("progress", currentProgress)
                     putExtra("fileName", fileName)
@@ -94,6 +93,7 @@ class PdfViewerActivity : AppCompatActivity() {
         val data = Intent().apply {
             putExtra("progress", currentProgress)
             putExtra("fileName", fileName)
+            putExtra("lastPage", currentPage)
         }
         setResult(Activity.RESULT_OK, data)
         finish()

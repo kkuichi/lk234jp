@@ -5,11 +5,13 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import com.google.android.material.appbar.MaterialToolbar
 import org.json.JSONException
 import org.json.JSONObject
+import java.io.File
 import java.io.IOException
 import java.util.Collections
 
@@ -32,7 +34,7 @@ class QuizActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
 
-        val quizFile = intent.getStringExtra("test_file") ?: return
+        val test_file = intent.getStringExtra("test_file") ?: return
         val testName = intent.getStringExtra("test_name") ?: return
         test_ID = intent.getIntExtra("test_ID", 0)
 
@@ -46,7 +48,7 @@ class QuizActivity : AppCompatActivity() {
         test_title.title = testName.substring(3)
 
 
-        loadAllQuestions(quizFile);
+        loadAllQuestions(test_file);
 
         val doShuffleTest = loadShuffleTestsSettings()
         if(doShuffleTest) {
@@ -126,9 +128,9 @@ class QuizActivity : AppCompatActivity() {
         }
 
     }
-    private fun loadAllQuestions(quizFile:String) {
+    private fun loadAllQuestions(fileName:String) {
         questionItems = ArrayList()
-        val jsonquiz: String = loadJsonFromAsset(quizFile)
+        val jsonquiz: String = loadJsonFromFile(fileName)
         try {
             val jsonObject = JSONObject(jsonquiz)
             val questions = jsonObject.getJSONArray("test")
@@ -154,6 +156,17 @@ class QuizActivity : AppCompatActivity() {
         } catch (e: JSONException) {
             e.printStackTrace()
         }
+    }
+
+    private fun loadJsonFromFile(fileName: String):String{
+        var json = ""
+        try {
+            val file = File(getExternalFilesDir(null), fileName)
+            json = file.readText(Charsets.UTF_8)
+        }catch (e: IOException){
+            Log.d("LoadJsonFile", e.toString())
+        }
+        return json
     }
     private fun loadJsonFromAsset(s: String): String {
         var json = ""
