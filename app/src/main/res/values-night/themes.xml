@@ -63,6 +63,7 @@
         <item name="android:layout_marginBottom">5dp</item>
         <item name="strokeWidth">0dp</item>
     </style>
+
     <style name="CardStyle">
         <item name="android:background">@color/background_night</item>
     </style>

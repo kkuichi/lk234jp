@@ -67,4 +67,12 @@
     <string name="name">Meno</string>
     <string name="progress">Prospech</string>
 
+    <string name="aboutApp">O Aplikácii</string>
+    <string name="aboutInfo">Táto aplikácia bola vytvorená ako súčasť bakalárskej práce na tému "Mobilná aplikácia pre podporu výučby predmetu Rozvrhovanie a logistika",
+        realizovanej na Katedre kybernetiky a umelej inteligencie, Fakulta elektrotechniky a informatiky, Technická univerzita v Košiciach v roku 2024.
+        Hlavným cieľom aplikácie je podpora vzdelávania a pochopenia Rozvrhovanie a logistika. Práca sa zameriava najmä
+        na využitie potenciálu mobilných technológií na zlepšenie vzdelávacieho procesu a sprístupnenie a zefektívnenie
+        učenia pre študentov. Vývoj tejto aplikácie poukazuje na dôležitosť integrácie moderných technológií do oblasti vzdelávania.</string>
+
+
 </resources>

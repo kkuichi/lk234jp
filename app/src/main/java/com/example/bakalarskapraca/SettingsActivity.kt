@@ -25,6 +25,7 @@ class SettingsActivity : AppCompatActivity() {
         val backToMain: ImageButton = findViewById(R.id.backToMainBtn)
         val switchTheme: Button = findViewById(R.id.theme_switch)
         val account: Button = findViewById(R.id.account_btn)
+        val aboutApp: Button = findViewById(R.id.aboutApp)
 
         var isNightMode:Boolean = false
 
@@ -58,7 +59,6 @@ class SettingsActivity : AppCompatActivity() {
 
         }
 
-
         switchTheme.setOnClickListener {
             // Check what the current night mode setting is
             when (AppCompatDelegate.getDefaultNightMode()) {
@@ -86,6 +86,10 @@ class SettingsActivity : AppCompatActivity() {
                 shuffleTests.setIconResource(R.drawable.shuffle_icon)
             }
             saveShuffleTestsToUserSettings(doShuffleTests)
+        }
+
+        aboutApp.setOnClickListener {
+            startActivity(Intent(this, InfoActivity::class.java))
         }
 
     }
