@@ -6,9 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.util.TypedValue
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.card.MaterialCardView
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.File
@@ -75,17 +78,9 @@ class QuizActivity : AppCompatActivity() {
         return sharedPreferences.getBoolean("ShuffleQuestions", false)
     }
 
-    private fun paintBtnToRegular(){
-        answerA.setBackgroundColor(resources.getColor(R.color.background))
-        answerB.setBackgroundColor(resources.getColor(R.color.background))
-        answerC.setBackgroundColor(resources.getColor(R.color.background))
-        answerD.setBackgroundColor(resources.getColor(R.color.background))
-        answerA.setTextColor(resources.getColor(R.color.text_secondary_color))
-        answerB.setTextColor(resources.getColor(R.color.text_secondary_color))
-        answerC.setTextColor(resources.getColor(R.color.text_secondary_color))
-        answerD.setTextColor(resources.getColor(R.color.text_secondary_color))
-    }
     private fun buttonOptionClick(answer: TextView){
+        val cardView = answer.parent.parent as MaterialCardView
+        val isCorrect = questionItems[currentQuestion].correct == answer.text.toString()
         var db_answer = "none"
         when(answer){
             answerA -> db_answer = questionItems[currentQuestion].answer1
@@ -94,27 +89,25 @@ class QuizActivity : AppCompatActivity() {
             answerD -> db_answer = questionItems[currentQuestion].answer4
             else -> println("buttonOptionClick: Error in matching answerType")
         }
-        paintBtnToRegular()
-        answer.setBackgroundColor(Color.WHITE)
-
+        highlightSelectedAnswer(answer)
         nextBtn = findViewById(R.id.next_quiz_button)
         nextBtn.setOnClickListener {
 
-            if(db_answer.equals(questionItems[currentQuestion].correct)){
+            if (isCorrect) {
                 correctAnswered++
-                answer.setBackgroundColor(Color.GREEN)
-            }else{
+                cardView.setCardBackgroundColor(ContextCompat.getColor(this, R.color.correctAnswer))
+            } else {
                 wrongAnswered++
-                answer.setBackgroundColor(Color.RED)
+                cardView.setCardBackgroundColor(ContextCompat.getColor(this, R.color.wrongAnswer))
             }
-            answer.setTextColor(Color.WHITE)
+
             if(currentQuestion<questionItems.size-1){
                 val handler = Handler()
                 handler.postDelayed( Runnable {
                     run {
-                        paintBtnToRegular()
                         currentQuestion++
                         setQuestionScreen(currentQuestion)
+                        resetAnswerStyles()
                     }
                 },1000)
             }else{
@@ -128,6 +121,26 @@ class QuizActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun resetAnswerStyles() {
+        val defaultBackground = TypedValue()
+        theme.resolveAttribute(androidx.appcompat.R.attr.colorControlNormal, defaultBackground, true)
+
+        val cardViews = listOf(answerA, answerB, answerC, answerD).map { it.parent.parent as MaterialCardView }
+        cardViews.forEach { cardView ->
+            cardView.setCardBackgroundColor(defaultBackground.data)
+        }
+    }
+    private fun highlightSelectedAnswer(selectedAnswer: TextView) {
+        val selectedCardView = selectedAnswer.parent.parent as MaterialCardView
+        val highlightColor = TypedValue()
+        theme.resolveAttribute(androidx.appcompat.R.attr.colorAccent, highlightColor, true)
+        resetAnswerStyles()
+        selectedCardView.setCardBackgroundColor(highlightColor.data)
+    }
+
+
+
     private fun loadAllQuestions(fileName:String) {
         questionItems = ArrayList()
         val jsonquiz: String = loadJsonFromFile(fileName)

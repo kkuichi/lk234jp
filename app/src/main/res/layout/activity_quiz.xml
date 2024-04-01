@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     android:orientation="vertical"
     tools:context=".QuizActivity">
 
@@ -39,10 +38,12 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="150dp"
+            android:backgroundTint="@android:color/transparent"
             >
             <TextView
+                style="@style/TextStyle"
                 android:textSize="20sp"
-                android:textColor="@color/text_secondary_color"
+                android:backgroundTint="@android:color/transparent"
                 android:padding="25dp"
                 android:gravity="center"
                 android:id="@+id/quizText"
@@ -54,19 +55,24 @@
     <com.google.android.material.card.MaterialCardView
         style="@style/TestCard"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
+
         <LinearLayout
-            android:layout_gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@android:color/transparent">
+
             <TextView
-                android:textSize="20sp"
-                android:textColor="@color/text_secondary_color"
-                android:padding="15dp"
-                android:gravity="center_vertical"
                 android:id="@+id/aanswer"
+                style="@style/TextSecondaryStyle"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:backgroundTint="@android:color/transparent"
+                android:gravity="center_vertical"
+                android:padding="15dp"
+                android:textSize="20sp" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -77,15 +83,19 @@
         <LinearLayout
             android:layout_gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            >
             <TextView
                 android:textSize="20sp"
-                android:textColor="@color/text_secondary_color"
+                style="@style/TextSecondaryStyle"
                 android:padding="15dp"
                 android:gravity="center_vertical"
                 android:id="@+id/banswer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:backgroundTint="@android:color/transparent"
+                />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -96,15 +106,19 @@
         <LinearLayout
             android:layout_gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            >
             <TextView
                 android:textSize="20sp"
-                android:textColor="@color/text_secondary_color"
+                style="@style/TextSecondaryStyle"
                 android:padding="15dp"
                 android:gravity="center_vertical"
                 android:id="@+id/canswer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:backgroundTint="@android:color/transparent"
+                />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -115,23 +129,29 @@
         <LinearLayout
             android:layout_gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            >
             <TextView
                 android:textSize="20sp"
-                android:textColor="@color/text_secondary_color"
+                style="@style/TextSecondaryStyle"
                 android:padding="15dp"
                 android:gravity="center_vertical"
                 android:id="@+id/danswer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:backgroundTint="@android:color/transparent"
+                />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <Button
+        style="@style/CardStyle"
         android:id="@+id/next_quiz_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="60dp"
         android:layout_marginTop="20dp"
-        android:text="@string/nextQuestion" />
+        android:text="@string/nextQuestion"
+        />
 </LinearLayout>

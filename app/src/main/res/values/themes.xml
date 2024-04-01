@@ -6,13 +6,13 @@
         <item name="colorPrimaryVariant">#4D4B4B</item>
         <item name="colorOnPrimary">@color/black</item>
         <item name="android:background">@color/background</item>
-
-        <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/background</item>
         <item name="android:windowLightStatusBar">true</item>
-        <!--        <item name="android:navigationBarColor">@color/background</item>-->
         <item name="textAppearanceTitleLarge">@style/TextAppearance.Material3.ActionBar.Title</item>
         <item name="materialAlertDialogTheme">@style/AlertDialog</item>
+
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorAccent">@color/card_background_highligh</item>
     </style>
 
     <style name="AlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog.Centered">
@@ -65,12 +65,20 @@
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:layout_marginBottom">5dp</item>
         <item name="strokeWidth">0dp</item>
-        <item name="android:backgroundTint">@color/white</item>
+        <item name="cardBackgroundColor">@color/white</item>
     </style>
 
     <style name="CardStyle">
         <item name="android:background">@color/white</item>
     </style>
+
+    <style name="ResultBackground">
+        <item name="android:background">@color/card_background_highligh</item>
+    </style>
+    <style name="ResultCards">
+        <item name="android:background">@color/background</item>
+    </style>
+
 
     <style name="TextStyle">
         <item name="android:textColor">@color/text_color</item>
@@ -97,6 +105,15 @@
     <style name="RecyclerViewItem">
         <item name="android:textColor">@color/text_color</item>
     </style>
+
+    <style name="TestCardCorrect" parent="TestCard">
+        <item name="cardBackgroundColor">@color/correctAnswer</item>
+    </style>
+
+    <style name="TestCardWrong" parent="TestCard">
+        <item name="cardBackgroundColor">@color/wrongAnswer</item>
+    </style>
+
 
     <style name="Theme.BakalarskaPraca" parent="Base.Theme.BakalarskaPraca" />
 </resources>

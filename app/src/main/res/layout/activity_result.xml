@@ -2,16 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ResultBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background"
     tools:context=".ResultActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:elevation="0dp"
-        android:background="@color/background"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
         <com.google.android.material.appbar.MaterialToolbar
@@ -23,7 +22,6 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.card.MaterialCardView
-        app:cardBackgroundColor="@color/card_background"
         app:strokeWidth="0dp"
         app:cardCornerRadius="25dp"
         android:layout_marginEnd="25dp"
@@ -32,11 +30,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
+            style="@style/ResultCards"
             android:gravity="center"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            style="@style/CardStyle">
+            android:layout_height="150dp">
 
             <ImageView
                 android:id="@+id/resultImage"
@@ -76,7 +74,7 @@
         android:layout_height="wrap_content"
         >
         <com.google.android.material.card.MaterialCardView
-            app:cardBackgroundColor="@color/card_background"
+            style="@style/ResultCards"
             app:strokeWidth="0dp"
             app:cardCornerRadius="25dp"
             android:layout_marginEnd="10dp"
@@ -88,11 +86,11 @@
             >
 
             <LinearLayout
+                style="@style/ResultCards"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:orientation="vertical"
-                style="@style/CardStyle"
                 >
                 <ImageView
                     android:layout_width="40dp"
@@ -132,12 +130,14 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent">
+
             <LinearLayout
+                style="@style/ResultCards"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                style="@style/CardStyle">
+                >
                 <ImageView
                     android:src="@drawable/wrong_icon"
                     android:backgroundTint="@android:color/transparent"
@@ -166,7 +166,6 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/returnHome"
-        app:cardBackgroundColor="@color/card_background"
         app:strokeWidth="0dp"
         app:cardCornerRadius="25dp"
         android:layout_marginEnd="25dp"
@@ -179,7 +178,8 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            style="@style/CardStyle">
+            style="@style/ResultCards"
+            >
             <TextView
                 android:id="@+id/resultTextview"
                 style="@style/TextStyle"

@@ -1,15 +1,18 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Base.Theme.BakalarskaPraca" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-    <item name="colorPrimary">@color/background_night</item>
-    <item name="colorPrimaryVariant">#4D4B4B</item>
-    <item name="colorOnPrimary">@color/background</item>
-    <item name="android:background">@color/background_night</item>
+
+        <item name="colorPrimary">@color/background_night</item>
+        <item name="colorPrimaryVariant">#4D4B4B</item>
+        <item name="colorOnPrimary">@color/background</item>
+        <item name="android:background">@color/background_night</item>
         <item name="android:statusBarColor">@color/background_night</item>
-    <item name="android:windowLightStatusBar">true</item>
-    <!--        <item name="android:navigationBarColor">@color/background</item>-->
-    <item name="textAppearanceTitleLarge">@style/TextAppearance.Material3.ActionBar.Title</item>
-    <item name="materialAlertDialogTheme">@style/AlertDialog</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.Material3.ActionBar.Title</item>
+        <item name="materialAlertDialogTheme">@style/AlertDialog</item>
+        <item name="colorControlNormal">@color/card_background_night</item>
+        <item name="colorAccent">@color/card_background_night_highligh</item>
+
     </style>
 
     <style name="AlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog.Centered">
@@ -62,11 +65,23 @@
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:layout_marginBottom">5dp</item>
         <item name="strokeWidth">0dp</item>
+        <item name="cardBackgroundColor">@color/card_background_night</item>
     </style>
 
+
     <style name="CardStyle">
+        <item name="backgroundTint">@color/card_background_night</item>
+    </style>
+
+
+    <style name="ResultBackground">
         <item name="android:background">@color/background_night</item>
     </style>
+    <style name="ResultCards">
+        <item name="android:background">@color/card_background_night</item>
+    </style>
+
+
     <style name="TextStyle">
         <item name="android:textColor">@color/white</item>
     </style>
@@ -88,6 +103,15 @@
 
     <style name="BackIcon">
         <item name="srcCompat">@drawable/back_button_night</item>
+    </style>
+
+
+    <style name="TestCardCorrect" parent="TestCard">
+        <item name="cardBackgroundColor">@color/correctAnswer</item>
+    </style>
+
+    <style name="TestCardWrong" parent="TestCard">
+        <item name="cardBackgroundColor">@color/wrongAnswer</item>
     </style>
 
 
