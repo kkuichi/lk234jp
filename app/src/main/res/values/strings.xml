@@ -29,17 +29,17 @@
     <string name="forgot_password_text">Zadajte e-mail, na ktorý vám bude zaslaný odkaz na obnovenie hesla.</string>
     <string name="forgot_password_btn">Zaslať</string>
 
-    <string name="Teoria_1">1. Úvodná prednáška</string>
+    <string name="Teoria_1">1. Rozvrhovanie a logistika</string>
     <string name="Teoria_2">2. Základné metódy operačného výskumu</string>
-    <string name="Teoria_3">3. Alokačné problémy</string>
-    <string name="Teoria_4">4. Rozvrhovanie</string>
-    <string name="Teoria_5">5. Plánovanie výrobných kapacít</string>
-    <string name="Teoria_6">6. Zákazková logistika</string>
-    <string name="Teoria_7">7. Zásobovanie</string>
-    <string name="Teoria_8">8. Úlohy s ohraničeniami</string>
-    <string name="Teoria_9">9. Rozvrhovanie</string>
-    <string name="Teoria_10">10. Rozvrhovanie</string>
-    <string name="Teoria_11">11. Rozvrhovanie</string>
+    <string name="Teoria_3">3. Alokácia do jedného miesta</string>
+    <string name="Teoria_4">4. Alokácia do viacerých miest</string>
+    <string name="Teoria_5">5. Rozvrhovanie 1</string>
+    <string name="Teoria_6">6. Rozvrhovanie 2</string>
+    <string name="Teoria_7">7. Rozvrhovanie 3</string>
+    <string name="Teoria_8">8. Prognózovanie</string>
+    <string name="Teoria_9">9. Plánovanie výrobných kapacít</string>
+    <string name="Teoria_10">10. Zásobovanie</string>
+    <string name="Teoria_11">11. Úlohy s ohraničeniami</string>
 
     <string name="no_internet_connection">Pripojte sa k internetu, aby bolo možné vidieť progres</string>
     <string name="no_internet_connection2">Alebo reštartujte aplikáciu</string>
