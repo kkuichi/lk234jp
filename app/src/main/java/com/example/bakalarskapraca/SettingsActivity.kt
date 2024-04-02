@@ -1,11 +1,13 @@
 package com.example.bakalarskapraca
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Switch
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.NightMode
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -26,6 +28,8 @@ class SettingsActivity : AppCompatActivity() {
         val switchTheme: Button = findViewById(R.id.theme_switch)
         val account: Button = findViewById(R.id.account_btn)
         val aboutApp: Button = findViewById(R.id.aboutApp)
+        val sendFeedback: Button = findViewById(R.id.sendFeedback)
+
 
         var isNightMode:Boolean = false
 
@@ -92,7 +96,28 @@ class SettingsActivity : AppCompatActivity() {
             startActivity(Intent(this, InfoActivity::class.java))
         }
 
+        sendFeedback.setOnClickListener {
+            sendFeedbackEmail()
+        }
+
     }
+
+    private fun sendFeedbackEmail() {
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "message/rfc822"
+            putExtra(Intent.EXTRA_EMAIL, arrayOf("rozvrhovaniealogistika.app@gmail.com"))
+            putExtra(Intent.EXTRA_SUBJECT, "Spätná väzba z aplikácie")
+            putExtra(Intent.EXTRA_TEXT, "Vaša správa:")
+        }
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(Intent.createChooser(intent, "Odoslať e-mail..."))
+        } else {
+            Toast.makeText(this, "Nemáte nainštalované žiadne e-mailové aplikácie. Pošlite e-mail na adresu rozvrhovaniealogistika.app@gmail.com", Toast.LENGTH_LONG).show()
+        }
+    }
+
+
+
     fun loadShuffleTestsSettings():Boolean {
         val sharedPreferences = getSharedPreferences("UserSettings", MODE_PRIVATE)
         return sharedPreferences.getBoolean("ShuffleQuestions", false)

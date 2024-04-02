@@ -79,17 +79,12 @@ class QuizActivity : AppCompatActivity() {
     }
 
     private fun buttonOptionClick(answer: TextView){
+
+        highlightSelectedAnswer(answer)
+
         val cardView = answer.parent.parent as MaterialCardView
         val isCorrect = questionItems[currentQuestion].correct == answer.text.toString()
-        var db_answer = "none"
-        when(answer){
-            answerA -> db_answer = questionItems[currentQuestion].answer1
-            answerB -> db_answer = questionItems[currentQuestion].answer2
-            answerC -> db_answer = questionItems[currentQuestion].answer3
-            answerD -> db_answer = questionItems[currentQuestion].answer4
-            else -> println("buttonOptionClick: Error in matching answerType")
-        }
-        highlightSelectedAnswer(answer)
+
         nextBtn = findViewById(R.id.next_quiz_button)
         nextBtn.setOnClickListener {
 
@@ -138,8 +133,6 @@ class QuizActivity : AppCompatActivity() {
         resetAnswerStyles()
         selectedCardView.setCardBackgroundColor(highlightColor.data)
     }
-
-
 
     private fun loadAllQuestions(fileName:String) {
         questionItems = ArrayList()
@@ -196,9 +189,6 @@ class QuizActivity : AppCompatActivity() {
         return json
     }
     private fun setQuestionScreen(currentQuestions: Int) {
-//        quiztext.apply {
-//            text = (questionItems.get(currentQuestions).question)
-//        }
         quiztext.text = questionItems[currentQuestions].question
         answerA.text = questionItems[currentQuestions].answer1
         answerB.text = questionItems[currentQuestions].answer2

@@ -78,7 +78,7 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/account_btn"
-        app:layout_constraintVertical_bias="0.09" />
+        app:layout_constraintVertical_bias="0.052" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/shuffleTests"
@@ -100,10 +100,10 @@
         app:iconTintMode="multiply"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/theme_switch"
-        app:layout_constraintVertical_bias="0.124" />
+        app:layout_constraintVertical_bias="0.05" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/aboutApp"
@@ -111,7 +111,7 @@
         android:layout_width="340dp"
         android:layout_height="85dp"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="150dp"
         android:contentDescription="@string/aboutApp"
         android:contextClickable="true"
@@ -125,9 +125,33 @@
         app:iconTint="@color/white"
         app:iconTintMode="multiply"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shuffleTests" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sendFeedback"
+        style="@style/MainButton"
+        android:layout_width="340dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="150dp"
+        android:contentDescription="@string/sendFeedback"
+        android:contextClickable="true"
+        android:text="@string/sendFeedback"
+        android:textAlignment="textStart"
+        android:textSize="24sp"
+        app:icon="@drawable/feedback_icon"
+        app:iconGravity="start"
+        app:iconPadding="10dp"
+        app:iconSize="40dp"
+        app:iconTint="@color/white"
+        app:iconTintMode="multiply"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutApp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
