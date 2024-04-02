@@ -51,7 +51,7 @@ class QuizActivity : AppCompatActivity() {
         test_title.title = testName.substring(3)
 
 
-        loadAllQuestions(test_file);
+        loadAllQuestions(test_file)
 
         val doShuffleTest = loadShuffleTestsSettings()
         if(doShuffleTest) {

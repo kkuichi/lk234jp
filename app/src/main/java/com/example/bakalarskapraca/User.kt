@@ -56,7 +56,7 @@ object User {
     }
     fun uploadUserToFireStore() {
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
-        val userDocumentRef = db.collection("users").document(User.uid)
+        val userDocumentRef = db.collection("users").document(uid)
 
         userDocumentRef.get().addOnSuccessListener { document ->
             if (!document.exists()) {

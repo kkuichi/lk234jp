@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
 
     fun setProgress(progress: Float, progressBar: ProgressBar, progressPercentage :TextView){
 
-        progressBar.progress = progress.toInt();
+        progressBar.progress = progress.toInt()
         progressPercentage.text = "${progress.toInt()}%"
     }
 }
