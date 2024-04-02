@@ -22,6 +22,8 @@
     <string name="registration_password">Heslo</string>
     <string name="registration_password_repeat">Zopakujte Heslo</string>
     <string name="registration_go_to_login">Už ste zaregistrovaní? Prihláste sa</string>
+    <string name="password_rule">Podmienky: Heslo musí obsahovať aspoň 6 znakov, z toho aspoň jedno písmeno a jednu číslicu.</string>
+
 
     <string name="forgot_password_title">Obnovenie hesla</string>
     <string name="forgot_password_text">Zadajte e-mail, na ktorý vám bude zaslaný odkaz na obnovenie hesla.</string>

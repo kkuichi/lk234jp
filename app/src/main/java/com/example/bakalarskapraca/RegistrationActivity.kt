@@ -74,27 +74,23 @@ class RegistrationActivity : AppCompatActivity() {
             reapet_password = registrationRepeatPassword.text.toString()
 
             if (TextUtils.isEmpty(name)) {
-                Toast.makeText(this, "Enter name", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Uveďte meno", Toast.LENGTH_SHORT).show()
                 progressBar.visibility = View.GONE
                 return@setOnClickListener
             }
             if (TextUtils.isEmpty(email)) {
-                Toast.makeText(this, "Enter email", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Uveďte email", Toast.LENGTH_SHORT).show()
                 progressBar.visibility = View.GONE
                 return@setOnClickListener
             }
-            if (TextUtils.isEmpty(password)) {
-                Toast.makeText(this, "Enter password", Toast.LENGTH_SHORT).show()
+            if (!validatePassword(password)) {
+                Toast.makeText(this, "Heslo nespĺňa podmienky", Toast.LENGTH_SHORT).show()
                 progressBar.visibility = View.GONE
                 return@setOnClickListener
             }
-            if (TextUtils.isEmpty(reapet_password)) {
-                Toast.makeText(this, "Repeat password", Toast.LENGTH_SHORT).show()
-                progressBar.visibility = View.GONE
-                return@setOnClickListener
-            }
+
             if (!reapet_password.equals(password)) {
-                Toast.makeText(this, "Passwords must be same", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Heslá musia byť rovnaké", Toast.LENGTH_SHORT).show()
                 progressBar.visibility = View.GONE
                 return@setOnClickListener
             }
@@ -137,6 +133,12 @@ class RegistrationActivity : AppCompatActivity() {
         googleSignUp.setOnClickListener {
             signInViaGoogle()
         }
+    }
+    fun validatePassword(password: String): Boolean {
+        val passwordPattern = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$"
+        val passwordMatcher = Regex(passwordPattern)
+
+        return passwordMatcher.matches(password)
     }
 
     fun signInViaGoogle(){

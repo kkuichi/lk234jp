@@ -30,7 +30,6 @@ class LoginActivity : AppCompatActivity() {
     lateinit var loginBtn: Button
 
     private lateinit var auth: FirebaseAuth
-    lateinit var progressBar: ProgressBar
 
     lateinit var loginForgotPass: TextView
     lateinit var loginGoToReg: TextView
@@ -47,7 +46,6 @@ class LoginActivity : AppCompatActivity() {
         loginEmail = findViewById(R.id.email)
         loginPassword = findViewById(R.id.password)
         loginBtn = findViewById(R.id.login_btn)
-        progressBar = findViewById(R.id.login_progress_bar)
         loginForgotPass = findViewById(R.id.password_forgot)
         loginGoToReg = findViewById(R.id.login_register_now)
         googleSignIn = findViewById(R.id.google_btn)
@@ -64,11 +62,9 @@ class LoginActivity : AppCompatActivity() {
 
 
         auth = Firebase.auth
-        val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
 
         loginBtn.setOnClickListener{
-            progressBar.visibility = View.VISIBLE
 
             val email:String = loginEmail.text.toString()
             val password:String = loginPassword.text.toString()
@@ -85,7 +81,6 @@ class LoginActivity : AppCompatActivity() {
 
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
-                    progressBar.visibility = View.GONE
                     if (task.isSuccessful) {
                         Toast.makeText(applicationContext, "Login Successfully", Toast.LENGTH_SHORT).show()
                         User.isLogged = true

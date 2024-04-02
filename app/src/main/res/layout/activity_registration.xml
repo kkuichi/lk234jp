@@ -28,11 +28,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:hint="@string/registration_password"
+        android:inputType="textPassword"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"></com.google.android.material.textfield.TextInputEditText>
+        app:layout_constraintTop_toBottomOf="@+id/email">
+    </com.google.android.material.textfield.TextInputEditText>
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/email"
@@ -40,6 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:hint="@string/registration_email"
+        android:inputType="textEmailAddress"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -54,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:hint="@string/registration_name"
+        android:inputType="textPersonName"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -68,6 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:hint="@string/registration_password_repeat"
+        android:inputType="textPassword"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -75,6 +80,8 @@
         app:layout_constraintTop_toBottomOf="@+id/password">
 
     </com.google.android.material.textfield.TextInputEditText>
+
+
 
     <ProgressBar
         android:id="@+id/registration_progress_bar"
@@ -91,7 +98,7 @@
         android:id="@+id/registration_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="72dp"
         android:text="@string/registration_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,7 +110,7 @@
         android:layout_height="74dp"
         android:layout_centerVertical="true"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:backgroundTint="@android:color/transparent"
         android:contentDescription="Google Sing In"
         android:src="@drawable/google_sign_in_icon"
@@ -115,7 +122,7 @@
         android:id="@+id/register_login_now"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="@string/registration_go_to_login"
         android:textSize="20sp"
@@ -123,6 +130,24 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/google_btn" />
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/TextSecondaryStyle"
+        android:layout_width="276dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="@string/password_rule"
+        app:layout_constraintBottom_toTopOf="@+id/registration_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_repeat"
+        app:layout_constraintVertical_bias="0.562" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
