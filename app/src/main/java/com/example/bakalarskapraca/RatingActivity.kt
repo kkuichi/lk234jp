@@ -37,7 +37,7 @@ class RatingActivity : AppCompatActivity() {
         val db = FirebaseFirestore.getInstance()
         db.collection("users")
             .orderBy("progress", Query.Direction.DESCENDING)
-            .limit(5)
+            .limit(15)
             .get()
             .addOnSuccessListener { documents ->
                 var topUsers = documents.toObjects<getUser>()

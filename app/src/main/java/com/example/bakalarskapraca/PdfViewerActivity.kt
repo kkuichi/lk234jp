@@ -41,7 +41,6 @@ class PdfViewerActivity : AppCompatActivity() {
         // Enable the Up button
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-
         val lastPage = intent.getIntExtra("lastPage", 0)
         val fileName = intent.getStringExtra("fileName") ?: ""
 
