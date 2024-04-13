@@ -1,4 +1,4 @@
-package com.example.bakalarskapraca
+package com.luka_kuzyk.bakalarskapraca
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

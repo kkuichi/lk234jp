@@ -1,4 +1,4 @@
-package com.example.bakalarskapraca
+package com.luka_kuzyk.bakalarskapraca
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -69,7 +69,6 @@ class StartActivity : AppCompatActivity() {
                 val fileName = document.getString("fileName") ?: ""
                 val filePath = document.getString("filePath") ?: ""
                 val lastModified = document.getTimestamp("lastModified") // Timestamp
-                val fileType = document.getString("fileType") ?: ""
 
                 checkAndDownloadFile(fileName, filePath, lastModified)
             }

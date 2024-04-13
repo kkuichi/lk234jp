@@ -9,8 +9,8 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.example.bakalarskapraca" />
-                  <option name="mobileSdkAppId" value="1:810275141288:android:b018d30933081881ca749d" />
+                  <option name="appId" value="com.luka_kuzyk.bakalarskapraca" />
+                  <option name="mobileSdkAppId" value="1:810275141288:android:b8b93a0cba3037b3ca749d" />
                   <option name="projectId" value="rozvrhovanie-a-logistika-f9776" />
                   <option name="projectNumber" value="810275141288" />
                 </ConnectionSetting>

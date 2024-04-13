@@ -1,4 +1,4 @@
-package com.example.bakalarskapraca
+package com.luka_kuzyk.bakalarskapraca
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,27 +1,23 @@
-package com.example.bakalarskapraca
+package com.luka_kuzyk.bakalarskapraca
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.View
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
-import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
-import com.google.firebase.firestore.FirebaseFirestore
 
 class LoginActivity : AppCompatActivity() {
 
@@ -117,12 +113,16 @@ class LoginActivity : AppCompatActivity() {
 
         if (requestCode == 1000) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try {
-                val account = task.getResult(ApiException::class.java)
+            task.addOnSuccessListener { account ->
+                // Якщо успішно, обробляємо отриманий обліковий запис
                 firebaseAuthWithGoogle(account.idToken!!)
-                User.name = account.givenName.toString()
-            } catch (e: ApiException) {
-                Toast.makeText(applicationContext, "Google sign in failed: $e", Toast.LENGTH_LONG).show()
+                User.name = account.givenName ?: "N/A"
+            }.addOnFailureListener { exception ->
+                // Обробка помилки
+                if (exception is ApiException) {
+                    Log.e("GoogleSignIn", "signInResult:failed code=" + exception.statusCode)
+                    Toast.makeText(applicationContext, "Google sign in failed: ${exception.localizedMessage}", Toast.LENGTH_LONG).show()
+                }
             }
         }
     }

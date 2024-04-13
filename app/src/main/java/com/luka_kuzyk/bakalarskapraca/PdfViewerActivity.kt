@@ -1,4 +1,4 @@
-package com.example.bakalarskapraca
+package com.luka_kuzyk.bakalarskapraca
 
 import android.app.Activity
 import android.content.Intent
@@ -9,15 +9,12 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
 import com.github.barteksc.pdfviewer.PDFView
 import java.io.File
 import java.io.IOException
-import kotlin.properties.Delegates
 
 class PdfViewerActivity : AppCompatActivity() {
 

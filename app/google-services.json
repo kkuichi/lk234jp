@@ -7,17 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:810275141288:android:b018d30933081881ca749d",
+        "mobilesdk_app_id": "1:810275141288:android:b8b93a0cba3037b3ca749d",
         "android_client_info": {
-          "package_name": "com.example.bakalarskapraca"
+          "package_name": "com.luka_kuzyk.bakalarskapraca"
         }
       },
       "oauth_client": [
         {
-          "client_id": "810275141288-1m868d9dt1dchs4jfa7f1k7iho2gn784.apps.googleusercontent.com",
+          "client_id": "810275141288-b75dfalhpooqhdedv5p5v6lh43b7qdj5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.bakalarskapraca",
+            "package_name": "com.luka_kuzyk.bakalarskapraca",
             "certificate_hash": "38d4ee9db4651af41c8f08e06cc5ed5a0509a73f"
           }
         },
