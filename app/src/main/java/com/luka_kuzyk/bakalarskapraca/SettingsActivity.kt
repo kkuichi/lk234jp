@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 class SettingsActivity : AppCompatActivity() {
 
+
     lateinit var gso: GoogleSignInOptions
     lateinit var gsc: GoogleSignInClient
     override fun onCreate(savedInstanceState: Bundle?) {
