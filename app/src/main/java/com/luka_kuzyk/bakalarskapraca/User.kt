@@ -5,19 +5,19 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
-
-// Singelton
+// Singleton objekt reprezentujúci používateľa
 object User {
-    var uid: String = ""
-    var name: String = ""
-    var email: String = ""
-    var progress: Float = 0.0f
-    var teoria_progress: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0) // Range 0-100 each = 11 topics
-    var teoria_lastPage: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
-    var testy: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)           // Range 0-100 each = 11 tests
-    var priklady_lastPage: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
-    var isLogged: Boolean = false
+    var uid: String = "" // Identifikátor používateľa
+    var name: String = "" // Meno používateľa
+    var email: String = "" // Email používateľa
+    var progress: Float = 0.0f // Celkový pokrok používateľa (v percentách)
+    var teoria_progress: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0) // Pokrok v teoretických témach
+    var teoria_lastPage: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0) // Posledná prezeraná stránka v teoretických témach
+    var testy: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0) // Výsledky testov (v percentách)
+    var priklady_lastPage: MutableList<Int> = mutableListOf(0,0,0,0,0,0,0,0,0,0,0) // Posledná prezeraná stránka v príkladoch
+    var isLogged: Boolean = false // Indikátor prihlásenia používateľa
 
+    // Metóda na odhlásenie používateľa (resetuje všetky údaje)
     fun logOutUser(){
         uid = ""
         name= ""
@@ -29,6 +29,8 @@ object User {
         priklady_lastPage = mutableListOf(0,0,0,0,0,0,0,0,0,0,0)
         isLogged= false
     }
+
+    // Metóda na nastavenie údajov používateľa
     fun setFields(uid:String, email:String, name:String, progress:Float,
                   teoria_progress:MutableList<Int>,teoria_lastPage:MutableList<Int>, testy:MutableList<Int>, priklady_lastPage:MutableList<Int>,
                   isLogged:Boolean){
@@ -42,6 +44,8 @@ object User {
         this.priklady_lastPage = priklady_lastPage
         this.isLogged = isLogged
     }
+
+    // Metóda na výpočet celkového pokroku používateľa
     fun calculateProgress(){
         progress = 0f
         for (i in teoria_progress){
@@ -53,6 +57,8 @@ object User {
             progress += local.toFloat()
         }
     }
+
+    // Metóda na nahranie údajov používateľa do Firestore
     fun uploadUserToFireStore() {
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
         val userDocumentRef = db.collection("users").document(uid)
@@ -71,15 +77,17 @@ object User {
                     "isLogged" to this.isLogged
                 )
                 userDocumentRef.set(newUser).addOnSuccessListener {
-                    println("User data successfully written")
+                    println("Údaje používateľa úspešne uložené")
                 }.addOnFailureListener { e ->
-                    println("Error writing user data: $e")
+                    println("Chyba pri ukladaní údajov používateľa: $e")
                 }
             }
         }.addOnFailureListener { e ->
-            println("Error reading user document: $e")
+            println("Chyba pri čítaní dokumentu používateľa: $e")
         }
     }
+
+    // Metóda na aktualizáciu údajov používateľa v Firestore
     fun uploadUserProgressToFireStore() {
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
         val userDocumentRef = db.collection("users").document(uid)
@@ -91,16 +99,18 @@ object User {
             "teoria_lastPage" to this.teoria_lastPage,
             "testy" to this.testy,
             "priklady_lastPage" to this.priklady_lastPage
-            )
+        )
         userDocumentRef.update(updatedUser)
             .addOnSuccessListener {
-                println("User data successfully updated")
+                println("Údaje používateľa úspešne aktualizované")
             }
             .addOnFailureListener { e ->
-            println("Error writing user data: $e")
+                println("Chyba pri zápise údajov používateľa: $e")
             }
 
     }
+
+    // Asynchrónna metóda na načítanie údajov používateľa z Firestore
     suspend fun loadUserFromFireStore() = withContext(Dispatchers.IO) {
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
@@ -113,9 +123,8 @@ object User {
                 }
             }
         } catch (e: Exception) {
-            println("Error reading document $e")
+            println("Chyba pri čítaní dokumentu: $e")
         }
     }
 
 }
-

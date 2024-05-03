@@ -8,15 +8,14 @@
 
     <TextView
         android:id="@+id/header_text"
+        style="@style/TextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/rating"
-        style="@style/TextStyle"
-        android:textSize="26sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
+        android:text="@string/rating"
         android:textAllCaps="true"
-        />
+        android:textSize="26sp" />
 
     <ImageButton
         android:id="@+id/backToMainBtn"
@@ -24,8 +23,8 @@
         android:layout_width="69dp"
         android:layout_height="69dp"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="20dp"
         android:layout_marginTop="11dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@android:color/transparent"
         android:contentDescription="back"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,39 +34,38 @@
         android:id="@+id/name_progress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_below="@id/header_text"
-        android:layout_marginVertical="20dp"
         android:layout_marginHorizontal="35dp"
+        android:layout_marginVertical="20dp"
+        android:orientation="horizontal"
         android:weightSum="2">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="left"
             android:text="@string/name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:gravity="left"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="right"
             android:text="@string/progress"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:gravity="right"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/name_progress"
         android:id="@+id/usersRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/name_progress"
         android:layout_centerVertical="true"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="8dp" >
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_marginBottom="8dp"></androidx.recyclerview.widget.RecyclerView>
 
 
 </RelativeLayout>

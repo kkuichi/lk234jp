@@ -8,15 +8,14 @@
 
     <TextView
         android:id="@+id/header_text"
+        style="@style/TextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/testy_btn"
-        style="@style/TextStyle"
-        android:textSize="30sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
+        android:text="@string/testy_btn"
         android:textAllCaps="true"
-        />
+        android:textSize="30sp" />
 
     <ImageButton
         android:id="@+id/backToMainBtn2"
@@ -35,9 +34,8 @@
         android:id="@+id/testListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/backToMainBtn2"
         android:layout_centerVertical="true"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="8dp"
-        android:layout_below="@+id/backToMainBtn2"
-        />
+        android:layout_marginBottom="8dp" />
 </RelativeLayout>

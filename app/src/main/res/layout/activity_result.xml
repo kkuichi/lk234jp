@@ -10,185 +10,188 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
-        android:elevation="0dp"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="0dp">
+
         <com.google.android.material.appbar.MaterialToolbar
-            app:title="Výsledky"
-            app:titleCentered="true"
             style="@style/TextStyle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            app:title="Výsledky"
+            app:titleCentered="true" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.card.MaterialCardView
-        app:strokeWidth="0dp"
-        app:cardCornerRadius="25dp"
-        android:layout_marginEnd="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_marginEnd="25dp"
+        app:cardCornerRadius="25dp"
+        app:strokeWidth="0dp">
+
         <LinearLayout
             style="@style/ResultCards"
-            android:gravity="center"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="150dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/resultImage"
-                android:src="@drawable/study_icon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:backgroundTint="@android:color/transparent"
-                />
+                android:src="@drawable/study_icon" />
+
             <TextView
                 android:id="@+id/resultInfo"
-                android:layout_marginTop="15dp"
                 style="@style/TextStyle"
-                android:textStyle="bold"
-                android:textSize="17sp"
-                android:text="Result Info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:backgroundTint="@android:color/transparent"
-                />
+                android:text="Result Info"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/resultScore"
                 style="@style/TextSecondaryStyle"
-                android:textSize="20sp"
-                android:text="Score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/transparent"
-                />
+                android:text="Score"
+                android:textSize="20sp" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:backgroundTint="@android:color/transparent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        android:backgroundTint="@android:color/transparent"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
         <com.google.android.material.card.MaterialCardView
             style="@style/ResultCards"
-            app:strokeWidth="0dp"
-            app:cardCornerRadius="25dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="25dp"
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            >
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="25dp"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 style="@style/ResultCards"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/done_icon"
                     android:backgroundTint="@android:color/transparent"
-                    />
+                    android:src="@drawable/done_icon" />
+
                 <TextView
                     style="@style/TextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:backgroundTint="@android:color/transparent"
                     android:text="@string/Correct"
                     android:textSize="17sp"
-                    android:textStyle="bold"
-                    android:backgroundTint="@android:color/transparent"
-                    />
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/correctScore"
+                    style="@style/TextSecondaryStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
-                    style="@style/TextSecondaryStyle"
-                    android:textSize="20sp"
                     android:backgroundTint="@android:color/transparent"
-                    />
+                    android:text="0"
+                    android:textSize="20sp" />
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
+
         <com.google.android.material.card.MaterialCardView
-            app:cardBackgroundColor="@color/card_background"
-            app:strokeWidth="0dp"
-            app:cardCornerRadius="25dp"
-            android:layout_marginEnd="25dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="10dp"
             android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
             android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
+            app:cardBackgroundColor="@color/card_background"
+            app:cardCornerRadius="25dp"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 style="@style/ResultCards"
-                android:gravity="center"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                >
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <ImageView
-                    android:src="@drawable/wrong_icon"
-                    android:backgroundTint="@android:color/transparent"
                     android:layout_width="40dp"
-                    android:layout_height="40dp"/>
+                    android:layout_height="40dp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:src="@drawable/wrong_icon" />
+
                 <TextView
-                    android:layout_marginTop="15dp"
                     style="@style/TextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:backgroundTint="@android:color/transparent"
-                    android:textStyle="bold"
-                    android:textSize="17sp"
                     android:text="@string/Wrong"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
                 <TextView
-                    style="@style/TextSecondaryStyle"
                     android:id="@+id/wrongScore"
-                    android:textSize="20sp"
-                    android:text="0"
-                    android:backgroundTint="@android:color/transparent"
+                    style="@style/TextSecondaryStyle"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:text="0"
+                    android:textSize="20sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/returnHome"
-        app:strokeWidth="0dp"
-        app:cardCornerRadius="25dp"
-        android:layout_marginEnd="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_marginEnd="25dp"
+        app:cardCornerRadius="25dp"
+        app:strokeWidth="0dp">
+
         <LinearLayout
-            android:gravity="center"
-            android:orientation="vertical"
+            style="@style/ResultCards"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            style="@style/ResultCards"
-            >
+            android:gravity="center"
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/resultTextview"
                 style="@style/TextStyle"
-                android:backgroundTint="@android:color/transparent"
-                android:textStyle="bold"
-                android:textSize="17sp"
-                android:text="@string/returnFromTests"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:text="@string/returnFromTests"
+                android:textSize="17sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 

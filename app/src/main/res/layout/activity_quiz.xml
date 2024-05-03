@@ -8,157 +8,155 @@
 
 
     <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".QuizActivity">
-
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
-        android:elevation="0dp"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:background="@color/background"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".QuizActivity">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/test_header"
-            app:titleCentered="true"
-            app:title="TEST"
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            style="@style/TextStyle"
-            />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <com.google.android.material.card.MaterialCardView
-        style="@style/TestCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-        <LinearLayout
+            android:layout_height="?attr/actionBarSize"
             android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:backgroundTint="@android:color/transparent"
-            >
-            <TextView
+            android:background="@color/background"
+            android:elevation="0dp"
+            android:gravity="center">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/test_header"
                 style="@style/TextStyle"
-                android:textSize="20sp"
-                android:backgroundTint="@android:color/transparent"
-                android:padding="25dp"
-                android:gravity="center"
-                android:id="@+id/quizText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        style="@style/TestCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="@android:color/transparent">
-
-            <TextView
-                android:id="@+id/aanswer"
-                style="@style/TextSecondaryStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:backgroundTint="@android:color/transparent"
-                android:gravity="center_vertical"
-                android:padding="15dp"
-                android:textSize="20sp" />
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+                app:title="TEST"
+                app:titleCentered="true" />
 
-    <com.google.android.material.card.MaterialCardView
-        style="@style/TestCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_gravity="center"
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/TestCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            >
-            <TextView
-                android:textSize="20sp"
-                style="@style/TextSecondaryStyle"
-                android:padding="15dp"
-                android:gravity="center_vertical"
-                android:id="@+id/banswer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="@android:color/transparent"
-                />
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+            android:layout_marginTop="20dp">
 
-    <com.google.android.material.card.MaterialCardView
-        style="@style/TestCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_gravity="center"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@android:color/transparent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/quizText"
+                    style="@style/TextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@android:color/transparent"
+                    android:gravity="center"
+                    android:padding="25dp"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/TestCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@android:color/transparent">
+
+                <TextView
+                    android:id="@+id/aanswer"
+                    style="@style/TextSecondaryStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@android:color/transparent"
+                    android:gravity="center_vertical"
+                    android:padding="15dp"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/TestCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@android:color/transparent">
+
+                <TextView
+                    android:id="@+id/banswer"
+                    style="@style/TextSecondaryStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@android:color/transparent"
+                    android:gravity="center_vertical"
+                    android:padding="15dp"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/TestCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@android:color/transparent">
+
+                <TextView
+                    android:id="@+id/canswer"
+                    style="@style/TextSecondaryStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@android:color/transparent"
+                    android:gravity="center_vertical"
+                    android:padding="15dp"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/TestCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@android:color/transparent">
+
+                <TextView
+                    android:id="@+id/danswer"
+                    style="@style/TextSecondaryStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@android:color/transparent"
+                    android:gravity="center_vertical"
+                    android:padding="15dp"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <Button
+            android:id="@+id/next_quiz_button"
+            style="@style/CardStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            >
-            <TextView
-                android:textSize="20sp"
-                style="@style/TextSecondaryStyle"
-                android:padding="15dp"
-                android:gravity="center_vertical"
-                android:id="@+id/canswer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="@android:color/transparent"
-                />
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        style="@style/TestCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            >
-            <TextView
-                android:textSize="20sp"
-                style="@style/TextSecondaryStyle"
-                android:padding="15dp"
-                android:gravity="center_vertical"
-                android:id="@+id/danswer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="@android:color/transparent"
-                />
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <Button
-        style="@style/CardStyle"
-        android:id="@+id/next_quiz_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="60dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/nextQuestion"
-        />
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/nextQuestion" />
     </LinearLayout>
 </ScrollView>

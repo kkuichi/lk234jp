@@ -15,19 +15,21 @@ import com.google.firebase.storage.storage
 import kotlinx.coroutines.launch
 import java.io.File
 
-
 private lateinit var auth: FirebaseAuth
 
+// Aktivita zodpovedná za úvodnú inicializáciu aplikácie
 class StartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
 
+        // Kontrola a aktualizácia súborov
         checkAndUpdateFiles()
 
         auth = Firebase.auth
         val currentUser = auth.currentUser
 
+        // Ak je používateľ prihlásený, načíta sa jeho profil a presmeruje sa na hlavnú obrazovku
         if (currentUser != null) {
             User.uid = currentUser.uid
             lifecycleScope.launch {
@@ -37,22 +39,26 @@ class StartActivity : AppCompatActivity() {
                 finish()
             }
         } else {
+            // Ak nie je používateľ prihlásený, priamo sa presmeruje na hlavnú obrazovku
             startActivity(Intent(this@StartActivity, MainActivity::class.java))
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
             finish()
         }
 
+        // Načítanie nastavenia nočného režimu
         loadNightModeSettings()
-
     }
-    fun loadNightModeSettings() {
-        val sharedPreferences = getSharedPreferences("UserSettings", MODE_PRIVATE)
 
-        val isNightModeEnabled = sharedPreferences.getBoolean("NightMode", false) // false - значення за замовчуванням
+    // Načítanie nastavenia nočného režimu
+    private fun loadNightModeSettings() {
+        val sharedPreferences = getSharedPreferences("UserSettings", MODE_PRIVATE)
+        val isNightModeEnabled = sharedPreferences.getBoolean("NightMode", false) // false - predvolená hodnota
 
         setNightMode(isNightModeEnabled)
     }
-    fun setNightMode(isEnabled: Boolean) {
+
+    // Nastavenie nočného režimu na základe zadaného stavu
+    private fun setNightMode(isEnabled: Boolean) {
         if (isEnabled) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         } else {
@@ -60,7 +66,7 @@ class StartActivity : AppCompatActivity() {
         }
     }
 
-
+    // Kontrola a aktualizácia súborov
     private fun checkAndUpdateFiles() {
         val db = Firebase.firestore
 
@@ -75,6 +81,7 @@ class StartActivity : AppCompatActivity() {
         }
     }
 
+    // Kontrola a prípadné stiahnutie súboru
     private fun checkAndDownloadFile(fileName: String, filePath: String, lastModified: Timestamp?) {
         val localFile = File(getExternalFilesDir(null), fileName)
 
@@ -82,7 +89,7 @@ class StartActivity : AppCompatActivity() {
             val localLastModifiedMs = localFile.lastModified()
             val remoteLastModifiedMs = lastModified?.toDate()?.time ?: 0L
 
-            if (localLastModifiedMs < remoteLastModifiedMs) { // IMPORTANT thing
+            if (localLastModifiedMs < remoteLastModifiedMs) { // Dôležité
                 downloadFile(filePath, localFile)
             }
         } else {
@@ -90,6 +97,7 @@ class StartActivity : AppCompatActivity() {
         }
     }
 
+    // Stiahnutie súboru z cloudového úložiska
     private fun downloadFile(filePath: String, localFile: File) {
         val fileRef = Firebase.storage.reference.child(filePath)
         fileRef.getFile(localFile).addOnSuccessListener {
@@ -98,8 +106,4 @@ class StartActivity : AppCompatActivity() {
             Log.d("StartActivity", "Failed to download file: $filePath", it)
         }
     }
-
-
-
 }
-

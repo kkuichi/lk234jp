@@ -24,6 +24,7 @@
 
     <ImageButton
         android:id="@+id/settings_btn"
+        style="@style/SettingsIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
@@ -33,9 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/SettingsIcon"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/rating_btn"
@@ -53,16 +52,16 @@
 
     <ImageView
         android:id="@+id/imageView2"
+        style="@style/MainIcon"
         android:layout_width="50sp"
         android:layout_height="50sp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="64dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/MainIcon"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/ProgressInfo"
         android:layout_width="338dp"
         android:layout_height="133dp"
         android:gravity="center"
@@ -71,12 +70,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.829"
-        style="@style/ProgressInfo">
+        app:layout_constraintVertical_bias="0.829">
 
 
         <TextView
             android:id="@+id/progressInfo"
+            style="@style/TextStyle"
             android:layout_width="162dp"
             android:layout_height="49dp"
             android:layout_marginStart="22dp"
@@ -87,9 +86,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/progressBar"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.354"
-            style="@style/TextStyle"
-            />
+            app:layout_constraintVertical_bias="0.354" />
 
         <TextView
             android:id="@+id/progressTotal"

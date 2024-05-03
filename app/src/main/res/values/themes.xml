@@ -28,7 +28,8 @@
         <item name="android:textColor">@color/text_color</item>
         <item name="android:textStyle">normal</item>
         <item name="android:elevation">5dp</item> <!-- Add elevation for shadow -->
-        <item name="android:backgroundTint">@color/white</item> <!-- Use backgroundTint for Material buttons -->
+        <item name="android:backgroundTint">@color/white
+        </item> <!-- Use backgroundTint for Material buttons -->
         <item name="textAllCaps">false</item>
         <item name="shapeAppearance">@style/CustomShapeAppearance</item>
     </style>
@@ -75,6 +76,7 @@
     <style name="ResultBackground">
         <item name="android:background">@color/card_background_highligh</item>
     </style>
+
     <style name="ResultCards">
         <item name="android:background">@color/background</item>
     </style>
@@ -83,6 +85,7 @@
     <style name="TextStyle">
         <item name="android:textColor">@color/text_color</item>
     </style>
+
     <style name="TextSecondaryStyle">
         <item name="android:textColor">@color/text_secondary_color</item>
     </style>
@@ -94,6 +97,7 @@
     <style name="SettingsIcon">
         <item name="srcCompat">@drawable/settings_icon</item>
     </style>
+
     <style name="RatingIcon">
         <item name="srcCompat">@drawable/rating</item>
     </style>

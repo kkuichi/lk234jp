@@ -17,6 +17,7 @@ import java.io.File
 import java.io.IOException
 import java.util.Collections
 
+// Aktivita pre logiku testov
 class QuizActivity : AppCompatActivity() {
 
     private lateinit var quiztext: TextView
@@ -40,53 +41,51 @@ class QuizActivity : AppCompatActivity() {
         val testName = intent.getStringExtra("test_name") ?: return
         test_ID = intent.getIntExtra("test_ID", 0)
 
+        // Inicializácia komponentov rozhrania
         quiztext = findViewById(R.id.quizText)
         answerA = findViewById(R.id.aanswer)
         answerB = findViewById(R.id.banswer)
         answerC = findViewById(R.id.canswer)
         answerD = findViewById(R.id.danswer)
-
         test_title = findViewById(R.id.test_header)
         test_title.title = testName.substring(3)
 
-
+        // Načítanie všetkých otázok zo súboru
         loadAllQuestions(test_file)
 
+        // Ak je povolené premiešanie testu, premiešajte otázky
         val doShuffleTest = loadShuffleTestsSettings()
         if(doShuffleTest) {
             Collections.shuffle(questionItems)
         }
+
+        // Nastavenie otázky na obrazovke
         setQuestionScreen(currentQuestion)
 
-        answerA.setOnClickListener {
-            buttonOptionClick(answerA)
-        }
-        answerB.setOnClickListener {
-            buttonOptionClick(answerB)
-        }
-        answerC.setOnClickListener {
-            buttonOptionClick(answerC)
-        }
-        answerD.setOnClickListener {
-            buttonOptionClick(answerD)
-        }
-
+        // Nastavenie onClickListenera pre odpovede
+        answerA.setOnClickListener { buttonOptionClick(answerA) }
+        answerB.setOnClickListener { buttonOptionClick(answerB) }
+        answerC.setOnClickListener { buttonOptionClick(answerC) }
+        answerD.setOnClickListener { buttonOptionClick(answerD) }
     }
-    fun loadShuffleTestsSettings():Boolean {
+
+    // Načítanie nastavenia premiešania testov
+    fun loadShuffleTestsSettings(): Boolean {
         val sharedPreferences = getSharedPreferences("UserSettings", MODE_PRIVATE)
         return sharedPreferences.getBoolean("ShuffleQuestions", false)
     }
 
-    private fun buttonOptionClick(answer: TextView){
-
+    // Spracovanie stlačenia tlačidla s odpoveďou
+    private fun buttonOptionClick(answer: TextView) {
         highlightSelectedAnswer(answer)
 
+        // Zistenie, či je odpoveď správna
         val cardView = answer.parent.parent as MaterialCardView
         val isCorrect = questionItems[currentQuestion].correct == answer.text.toString()
 
+        // Nastavenie nasledujúcej otázky po kliknutí na tlačidlo "Ďalšie"
         nextBtn = findViewById(R.id.next_quiz_button)
         nextBtn.setOnClickListener {
-
             if (isCorrect) {
                 correctAnswered++
                 cardView.setCardBackgroundColor(ContextCompat.getColor(this, R.color.correctAnswer))
@@ -95,7 +94,7 @@ class QuizActivity : AppCompatActivity() {
                 cardView.setCardBackgroundColor(ContextCompat.getColor(this, R.color.wrongAnswer))
             }
 
-            if(currentQuestion<questionItems.size-1){
+            if(currentQuestion < questionItems.size - 1) {
                 val handler = Handler()
                 handler.postDelayed( Runnable {
                     run {
@@ -103,8 +102,9 @@ class QuizActivity : AppCompatActivity() {
                         setQuestionScreen(currentQuestion)
                         resetAnswerStyles()
                     }
-                },1000)
-            }else{
+                }, 1000)
+            } else {
+                // Ak je zodpovedaná posledná otázka, prejdite na výsledkovú aktivitu
                 val intent = Intent(this, ResultActivity::class.java)
                 intent.putExtra("correct", correctAnswered)
                 intent.putExtra("wrong", wrongAnswered)
@@ -113,9 +113,9 @@ class QuizActivity : AppCompatActivity() {
                 finish()
             }
         }
-
     }
 
+    // Obnovenie štýlov odpovedí
     private fun resetAnswerStyles() {
         val defaultBackground = TypedValue()
         theme.resolveAttribute(androidx.appcompat.R.attr.colorControlNormal, defaultBackground, true)
@@ -125,6 +125,8 @@ class QuizActivity : AppCompatActivity() {
             cardView.setCardBackgroundColor(defaultBackground.data)
         }
     }
+
+    // Zvýraznenie vybranej odpovede
     private fun highlightSelectedAnswer(selectedAnswer: TextView) {
         val selectedCardView = selectedAnswer.parent.parent as MaterialCardView
         val highlightColor = TypedValue()
@@ -133,7 +135,8 @@ class QuizActivity : AppCompatActivity() {
         selectedCardView.setCardBackgroundColor(highlightColor.data)
     }
 
-    private fun loadAllQuestions(fileName:String) {
+    // Načítanie otázok zo súboru JSON
+    private fun loadAllQuestions(fileName: String) {
         questionItems = ArrayList()
         val jsonquiz: String = loadJsonFromFile(fileName)
         try {
@@ -163,30 +166,19 @@ class QuizActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadJsonFromFile(fileName: String):String{
+    // Načítanie obsahu zo súboru JSON
+    private fun loadJsonFromFile(fileName: String): String {
         var json = ""
         try {
             val file = File(getExternalFilesDir(null), fileName)
             json = file.readText(Charsets.UTF_8)
-        }catch (e: IOException){
+        } catch (e: IOException) {
             Log.d("LoadJsonFile", e.toString())
         }
         return json
     }
-    private fun loadJsonFromAsset(s: String): String {
-        var json = ""
-        try {
-            val inputStream = assets.open(s)
-            val size = inputStream.available()
-            val buffer = ByteArray(size)
-            inputStream.read(buffer)
-            inputStream.close()
-            json = String(buffer, charset("UTF-8"))
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-        return json
-    }
+
+    // Nastavenie aktuálnej otázky na obrazovke
     private fun setQuestionScreen(currentQuestions: Int) {
         quiztext.text = questionItems[currentQuestions].question
         answerA.text = questionItems[currentQuestions].answer1
@@ -194,12 +186,14 @@ class QuizActivity : AppCompatActivity() {
         answerC.text = questionItems[currentQuestions].answer3
         answerD.text = questionItems[currentQuestions].answer4
     }
-    class QuestionsItem(
-        var question:String,
-        var answer1:String,
-        var answer2:String,
-        var answer3: String,
-        var answer4:String,
-        var correct:String)
-}
 
+    // Trieda reprezentujúca položky otázok
+    class QuestionsItem(
+        var question: String,
+        var answer1: String,
+        var answer2: String,
+        var answer3: String,
+        var answer4: String,
+        var correct: String
+    )
+}

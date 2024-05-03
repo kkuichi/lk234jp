@@ -9,9 +9,12 @@ class InfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
 
+        // Nájdenie tlačidla pre návrat na hlavnú obrazovku Main
         val backToMain: ImageButton = findViewById(R.id.backToMainBtn)
 
+        // Nastavenie onClickListeneru na tlačidlo pre návrat
         backToMain.setOnClickListener {
+            // Ukončenie aktuálnej aktivity a návrat na hlavnú obrazovku
             finish()
         }
 

@@ -16,11 +16,13 @@ import com.github.barteksc.pdfviewer.PDFView
 import java.io.File
 import java.io.IOException
 
+// Aktivita na zobrazenie PDF súborov
 class PdfViewerActivity : AppCompatActivity() {
 
-    var currentProgress:Int = 0
+    var currentProgress: Int = 0
     var currentPage: Int = 0
-    lateinit var fileName:String
+    lateinit var fileName: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pdf_viewer)
@@ -30,28 +32,28 @@ class PdfViewerActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        // Retrieve and set the PDF title
-        val pdfTitle = intent.getStringExtra("pdfTitle") ?: "PDF Viewer"
+        // Získanie a nastavenie názvu PDF
+        val pdfTitle = intent.getStringExtra("pdfTitle") ?: "Prehliadač PDF"
         supportActionBar?.title = pdfTitle
         fileName = pdfTitle
 
-        // Enable the Up button
+        // Povolenie tlačidla Up
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val lastPage = intent.getIntExtra("lastPage", 0)
         val fileName = intent.getStringExtra("fileName") ?: ""
 
         try {
-
             val localFile = File(getExternalFilesDir(null), fileName)
 
+            // Nastavenie zobrazenia PDF
             pdfView.fromFile(localFile)
                 .enableSwipe(true)
                 .swipeHorizontal(false)
                 .enableDoubletap(true)
                 .defaultPage(lastPage)
                 .onPageChange { page, pageCount ->
-                    val visiblePages = 3 // user typically sees up to 3 pages
+                    val visiblePages = 3 // používateľ zvyčajne vidí až 3 stránky
                     val adjustedPageCount = pageCount - (visiblePages - 1)
                     val adjustedPage = if (page >= adjustedPageCount) pageCount else page
 
@@ -63,16 +65,18 @@ class PdfViewerActivity : AppCompatActivity() {
                     }
                 }
                 .load()
-            } catch (e: IOException) {
+        } catch (e: IOException) {
             e.printStackTrace()
-            Log.d("PdfViewerActivity", "Failed to load PDF: $fileName")
+            Log.d("PdfViewerActivity", "Chyba pri načítaní PDF: $fileName")
         }
 
     }
+
+    // Spracovanie výberu položky v paneli akcií
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                // Respond to the action bar's Up/Home button
+                // Reagovanie na tlačidlo Up/Home
                 val data = Intent().apply {
                     putExtra("progress", currentProgress)
                     putExtra("fileName", fileName)
@@ -85,6 +89,8 @@ class PdfViewerActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    // Spracovanie stlačenia tlačidla Späť
     override fun onBackPressed() {
         val data = Intent().apply {
             putExtra("progress", currentProgress)
@@ -95,19 +101,26 @@ class PdfViewerActivity : AppCompatActivity() {
         finish()
         super.onBackPressed()
     }
-
-
 }
 
-data class PdfItem(val id: Int, val name: String, val fileName: String, var progress: Int = 0, var lastPage: Int = 0)
+// Dátová trieda reprezentujúca položku PDF
+data class PdfItem(
+    val id: Int,
+    val name: String,
+    val fileName: String,
+    var progress: Int = 0,
+    var lastPage: Int = 0
+)
 
+// Adaptér pre RecyclerView zobrazujúci položky PDF
 class PdfAdapter(
     private val items: List<PdfItem>,
     private val onItemClick: (PdfItem) -> Unit
 ) : RecyclerView.Adapter<PdfAdapter.PdfViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PdfViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.teoria_item_layout, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.teoria_item_layout, parent, false)
         return PdfViewHolder(view, onItemClick)
     }
 
@@ -118,6 +131,7 @@ class PdfAdapter(
 
     override fun getItemCount(): Int = items.size
 
+    // ViewHolder pre položku PDF
     class PdfViewHolder(
         itemView: View,
         private val onItemClick: (PdfItem) -> Unit
@@ -125,17 +139,19 @@ class PdfAdapter(
         private val textView: TextView = itemView.findViewById(R.id.item_text)
         private val progressNum: TextView = itemView.findViewById(R.id.teoria_progress_num)
 
+        // Viazanie údajov o položke PDF na zobrazenie
         fun bind(pdfItem: PdfItem) {
             textView.text = pdfItem.name
-            if(pdfItem.progress == -2) { // Exception for Priklady activity
+            // Ak je pokrok -2, skryjeme text pokroku (výnimka pre aktivitu Priklady)
+            if (pdfItem.progress == -2) {
                 progressNum.visibility = View.GONE
-            }else {
+            } else {
                 progressNum.text = "${pdfItem.progress}%"
             }
+            // Spracovanie stlačenia položky
             itemView.setOnClickListener {
                 onItemClick(pdfItem)
             }
         }
     }
 }
-

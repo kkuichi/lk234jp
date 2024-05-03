@@ -42,14 +42,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="39dp"
         android:hint="@string/login_password"
-        android:textSize="25sp"
         android:inputType="textPassword"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email">
-    </com.google.android.material.textfield.TextInputEditText>
-
+        app:layout_constraintTop_toBottomOf="@+id/email"></com.google.android.material.textfield.TextInputEditText>
 
 
     <Button
@@ -65,7 +63,6 @@
 
 
     <ImageButton
-        android:visibility="gone"
         android:id="@+id/google_btn"
         android:layout_width="219dp"
         android:layout_height="74dp"
@@ -74,14 +71,14 @@
         android:layout_marginTop="28dp"
         android:layout_marginBottom="52dp"
         android:backgroundTint="@android:color/transparent"
+        android:contentDescription="Google Sing In"
         android:src="@drawable/google_sign_in_icon"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/login_register_now"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_btn"
-        app:layout_constraintVertical_bias="0.5"
-        android:contentDescription="Google Sing In"
-        />
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/login_register_now"
