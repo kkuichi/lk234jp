@@ -1,6 +1,8 @@
 <h1>Mobilná aplikácia pre podporu výučby predmetu Rozvrhovanie a logistika</h1>
 
-<p>Aplikácia „Mobilná aplikácia pre podporu výučby predmetu Rozvrhovanie a logistika“ je vytvorená ako bakalárska práca. Poskytuje študentom možnosť študovať predmet Rozvrhovanie a logistika, pričom im umožňuje pracovať s praktickými úlohami, sledovať vlastný pokrok a získavať odpovede na otázky súvisiace s predmetom.</p>
+<p>V nasledujúcej príručke sa zameriame na detailný opis systémovej stránky aplikácie "Mobilná aplikácia pre podporu výučby predmetu Rozvrhovanie a logistika"..Cieľom aplikácie je poskytnúť študentom lepšiu podporu pri štúdiu tohto predmetu prostredníctvom mobilnej aplikácie.</p>
+
+Na zrealizovanie praktickej časti záverečnej práce sme využili jazyk Kotlin, ktorý je moderným, vysoko výkonným programovacím jazykom určeným na vývoj mobilných aplikácií pre platformu Android. Kotlin ponúka množstvo funkcií, ktoré zjednodušujú vývoj a umožňujú vytvárať čistý, prehľadný a efektívny kód.
 
 <h2>Obsah</h2>
 <ul>
@@ -32,6 +34,7 @@
     <li>Nakonfigurujte Firebase pre Android aplikáciu podľa <a href="https://firebase.google.com/docs/android/setup">oficiálnej dokumentácie</a>.</li>
     <li>Spustite aplikáciu na emulátore alebo fyzickom zariadení.</li>
 </ol>
+![Uploading activity diagram Uno.png…]()
 
 <h2 id="struktura">Štruktúra projektu</h2>
 <pre>
