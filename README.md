@@ -1,6 +1,7 @@
 <h1>Mobilná aplikácia pre podporu výučby predmetu Rozvrhovanie a logistika</h1>
 
-<p>V nasledujúcej príručke sa zameriame na detailný opis systémovej stránky aplikácie "Mobilná aplikácia pre podporu výučby predmetu Rozvrhovanie a logistika".Cieľom aplikácie je poskytnúť študentom lepšiu podporu pri štúdiu tohto predmetu prostredníctvom mobilnej aplikácie.</p>
+<p>V nasledujúcej príručke sa zameriame na detailný opis systémovej stránky aplikácie "Mobilná aplikácia pre podporu výučby predmetu Rozvrhovanie a logistika".
+    Cieľom aplikácie je poskytnúť študentom lepšiu podporu pri štúdiu tohto predmetu prostredníctvom mobilnej aplikácie.</p>
 
 
 Na zrealizovanie praktickej časti záverečnej práce sme využili jazyk Kotlin, ktorý je moderným, vysoko výkonným programovacím jazykom určeným na vývoj mobilných aplikácií pre platformu Android. Kotlin ponúka množstvo funkcií, ktoré zjednodušujú vývoj a umožňujú vytvárať čistý, prehľadný a efektívny kód.
@@ -26,13 +27,6 @@ Na zrealizovanie praktickej časti záverečnej práce sme využili jazyk Kotlin
     <li><strong>ViewModel:</strong> Poskytuje dátam logiku a sprostredkováva ich medzi Model a View.</li>
 </ul>
 
-<h2 id="firebase">Firebase integrácia</h2>
-<p>Aplikácia využíva Firebase pre autentifikáciu a ukladanie dát. Pre jej konfiguráciu je potrebné:</p>
-<ol>
-    <li>Pridať aplikáciu do <a href="https://console.firebase.google.com/">Firebase konzoly</a>.</li>
-    <li>Stiahnuť konfiguračný súbor <code>google-services.json</code> a pridať ho do priečinka <code>app/</code>.</li>
-    <li>Pridať Firebase závislosti do súboru <code>build.gradle</code>.</li>
-</ol>
 
 <h2 id="technologie">Použité technológie</h2>
 <ul>
