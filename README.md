@@ -8,13 +8,11 @@ Na zrealizovanie praktickej časti záverečnej práce sme využili jazyk Kotlin
 
 <h2 id="funkcionalita">Funkcionalita aplikácie</h2>
 <ul>
-    <li>Registrácia a prihlásenie používateľov</li>
-    <li>Správa používateľského profilu</li>
-    <li>Zobrazovanie vzdelávacích materiálov</li>
-    <li>Riešenie úloh a testovanie vedomostí</li>
-    <li>Monitoring pokroku študenta</li>
-    <li>Fórum na otázky a odpovede</li>
-    <li>Možnosť kontaktovať učiteľa</li>
+    <li>Prehľad vzdelávacích materiálov</li>
+    <li>Testovanie získaných vedomostí</li>
+    <li>Monitoring vlastného pokroku študenta</li>
+    <li>Registrácia a prihlásenie</li>
+    <li>Automatická synchronizácia obsahu aplikácie so službou Firebase</li>
 </ul>
 
 
