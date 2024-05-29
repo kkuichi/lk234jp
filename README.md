@@ -38,3 +38,5 @@ Na zrealizovanie praktickej časti záverečnej práce sme využili jazyk Kotlin
 </ul>
 
 <p>Autor: Luka Kuzyk</p>
+
+luka.kuzyk.dev@gmail.com
